@@ -10,7 +10,7 @@ How to use the app, page by page. For a start-to-finish walkthrough of recording
 - [Buying and selling](#buying-and-selling)
 - [Pending Trades](#pending-trades)
 - [Trade History](#trade-history)
-- [Tracking with ParcelApp](#tracking-with-parcelapp)
+- [Package tracking](#package-tracking)
 - [For Sale](#for-sale)
 - [Counterparties](#counterparties)
 - [Expenses and shipping labels](#expenses-and-shipping-labels)
@@ -46,7 +46,7 @@ You never type how many of something you have. The app works it out from your tr
 
 *The Dashboard (practice data): value cards across the top, holdings by metal, and the trades that need you under Needs attention.*
 
-- **Action row:** ⟳ Live prices, ⟳ Sync tracking, ➕ Add to ParcelApp and Reports, with spot price and ParcelApp
+- **Action row:** ⟳ Live prices, ⟳ Sync tracking, ➕ Add to TrackingApp and Reports, with spot price and tracking
   status on the right.
 - **Cards:** units, cost basis, melt value, melt − cost, total sold, realized P/L, expenses, net P/L this year and this
   month, buys pending (value on the way), sells pending (value and estimated profit) and listed for sale (value and
@@ -120,7 +120,7 @@ Start a trade from the **Trade** menu, the Quick actions or the buttons on each 
 |---|---|---|
 | 1. Create | pick items, set qty and unit price | pick items, set qty and sell price |
 | 2. Starting status | **Ship First/Trade** or **Payment Completed** (default) | **Awaiting Payment** (default), then **$ Payment Completed** |
-| 3. Tracking added | status becomes **Trade Pending**; click **➕ Add to ParcelApp** when ready | same |
+| 3. Tracking added | status becomes **Trade Pending**; click **➕ Add to TrackingApp** when ready | same |
 | 4. In transit | a tracking sync updates the status and expected date | same |
 | 5. Delivered | sync sets **Delivered** (the row turns green); check the item | sync sets **Delivered**; confirm with the buyer |
 | 6. Complete | **✔ Trade Completed** (never automatic) | same |
@@ -207,27 +207,31 @@ expenses for the date range to give net P/L.
 | Lost sell: you refunded the buyer | refund | reverses the sale |
 | Insurance paid out | amount received | income against what was written off |
 
-## Tracking with ParcelApp
+## Package tracking
 
-The app can add your tracking numbers to [ParcelApp](https://parcelapp.net) and read back their delivery status. You
-need Parcel Premium and an API key from web.parcelapp.net. Paste the key into **Settings**.
+The app adds your tracking numbers to a package-tracking service and reads back their delivery status, so you
+can follow packages in that service's own app on your phone too. Pick the service in Settings → *TrackingApp*
+→ *Service* and paste its API key underneath. Integrations with several services are in progress and will be
+completed over time; the *Service* list shows which ones are ready.
 
 - The app syncs once when it opens and whenever you click **⟳ Sync tracking**. To sync on its own as well, set
-  Settings → ParcelApp → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
-- ParcelApp allows **20 adds a day** and **20 syncs an hour**. The app counts its own calls and won't make one that
-  would go over, so an add is never wasted. Settings shows how many you've used.
-- Saving a tracking number sets the trade to **Trade Pending** but doesn't add it to ParcelApp yet. The trade shows
-  "not added" until you click **➕ Add to ParcelApp**, which adds the selected trades (or all waiting ones) after you
-  confirm.
-- A sync marks as added any number ParcelApp already has, so numbers you added in the Parcel app yourself don't need
-  adding again.
+  Settings → *TrackingApp* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
+- Each service limits how many numbers you can add a day and how often you can sync. The app counts its own calls
+  and won't make one that would go over, so an add is never wasted. Settings shows how many you've used.
+- Saving a tracking number sets the trade to **Trade Pending** but doesn't add it to the service yet. The trade
+  shows "not added" until you click **➕ Add to TrackingApp**, which adds the selected trades (or all waiting ones)
+  after you confirm.
+- A sync marks as added any number the service already has, so numbers you added in the service's app yourself
+  don't need adding again.
 - A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
-- **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so
-  ParcelApp never holds what's in a package or who it's for. Set your own labels in Settings → ParcelApp →
-  *Delivery names*: something you'll recognise in the Parcel app (an arrow or a symbol works well), not a word
-  like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in Pending
-  Trades.
+- **Only the bare minimum leaves the app:** the tracking number, the carrier and a short delivery name. Never the
+  counterparty, address, items or prices, whichever service you use.
+- **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so the
+  service never holds what's in a package or who it's for. Set your own labels in Settings → *TrackingApp* →
+  *Delivery names*: something you'll recognise in the tracking app on your phone (an arrow or a symbol works well),
+  not a word like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in
+  Pending Trades.
 
 ## For Sale
 
@@ -337,12 +341,13 @@ Google AI Pro subscription doesn't include an API key.) Settings shows this mont
 
 *Settings: API keys and the tracking timer, spot prices and their refresh, and where your data and backups go.*
 
-- **API keys** (ParcelApp, Gemini) are stored encrypted so that only your Windows account on this PC can read them. The
+- **API keys** (tracking service, Gemini) are stored encrypted so that only your Windows account on this PC can read them. The
   box is never pre-filled; paste a new key and click *Save key*, or *Remove key*.
 - **Spot prices:** type prices by hand if live prices aren't available. *Refresh live prices every … minutes*
   fetches them on its own while the app is open: 5 minutes or more, or **Off** (the default: only when the app
   opens and on ⟳ Live prices).
-- **Sync tracking:** in the ParcelApp box, **Off** (the default), **Every hour** or **Every 2 hours**.
+- **TrackingApp:** pick the *Service* (more integrations are in progress), paste its key, and set *Sync
+  tracking* to **Off** (the default), **Every hour** or **Every 2 hours**, and your *Delivery names*.
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app
   (last 30 kept), before anything is deleted (last 20) and before each update (last 10). *Open backups* shows them. To
   restore one, close the app and copy it over `inventory.db`, or use **File → Open / new database…**.

@@ -11,7 +11,7 @@ For a page-by-page reference, see the [user guide](GUIDE.md).
 - [Pages](#pages)
 - [Workflows](#workflows): [buying](#buying), [selling](#selling), [a worked example](#a-worked-example),
   [partly delivered](#partly-delivered), [when things go wrong](#when-things-go-wrong), [serials](#serials),
-  [listing for sale](#listing-for-sale), [shipping and ParcelApp](#shipping-and-parcelapp), [expenses](#expenses),
+  [listing for sale](#listing-for-sale), [shipping and tracking](#shipping-and-tracking), [expenses](#expenses),
   [shipping labels](#shipping-labels), [reports](#reports), [counterparties](#counterparties)
 - [Daily and weekly routine](#daily-and-weekly-routine)
 - [Troubleshooting and rules of thumb](#troubleshooting-and-rules-of-thumb)
@@ -19,7 +19,7 @@ For a page-by-page reference, see the [user guide](GUIDE.md).
 ## How it works
 
 Everything runs on your PC. Your data lives in one file (`inventory.db`), and API keys are stored encrypted for your
-Windows account. The app goes online only when it opens and when you click a button: ParcelApp for tracking,
+Windows account. The app goes online only when it opens and when you click a button: your tracking service,
 gold-api.com for spot prices, Gemini for the optional AI features, and GitHub to check for app updates.
 
 | Concept | What it means |
@@ -50,7 +50,7 @@ Setup takes about 15 minutes: install the app, add two keys, check spot prices, 
 
 ![The Settings page](images/settings.png)
 
-*Settings: the ParcelApp and Gemini keys at the top, spot prices in the middle, your data and backups at the bottom.*
+*Settings: the tracking service and Gemini keys at the top, spot prices in the middle, your data and backups at the bottom.*
 
 1. **Install the app.** Download `SlothyInventorySetup-<version>.exe` from the
    [latest release](https://github.com/arpspatel/slothy-inventory-releases/releases/latest) and run it. If Windows shows
@@ -60,8 +60,8 @@ Setup takes about 15 minutes: install the app, add two keys, check spot prices, 
 2. **Your database.** On first launch the app creates `Documents\InventoryApp\inventory.db` and offers to import an
    existing workbook; choose No to start empty. Settings → *Data location* shows the file in use, with
    **Open folder**, **Move database…**, **Open / new database…** and **Back up now…**.
-3. **Add the ParcelApp key.** Get it at web.parcelapp.net (needs Parcel Premium). Settings → *ParcelApp API key* →
-   **New key** → **Save key**. Limits: 20 syncs an hour, 20 adds a day. Optional: set *Sync tracking* to
+3. **Set up tracking.** Settings → *TrackingApp* → pick the *Service* (integrations with more services are in
+   progress), then paste its API key in **New key** → **Save key**. Optional: set *Sync tracking* to
    **Every hour** or **Every 2 hours** so tracking updates on its own while the app is open.
 4. **Add the Gemini key (optional).** Only needed for AI spreadsheet import and ✨ AI price check. Create it free at
    [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Web-search price checks need a paid-tier key. Set
@@ -94,10 +94,10 @@ for looking things up and reporting.
 
 | Page | Use it for | Key actions |
 |---|---|---|
-| **Dashboard** | Holdings at a glance: units, cost basis, melt, melt − cost, total sold, realized P/L, expenses, net P/L this year and this month, buys pending, sells pending (with estimated profit), listed for sale (value and profit at ask). Holdings by metal (items, weight, cost, average cost per ounce, melt), with ▸ to open each metal's types; metals aren't added together. *Needs attention* list. ParcelApp and spot status. | ⟳ Live prices, ⟳ Sync tracking, ➕ Add to ParcelApp, Reports |
+| **Dashboard** | Holdings at a glance: units, cost basis, melt, melt − cost, total sold, realized P/L, expenses, net P/L this year and this month, buys pending, sells pending (with estimated profit), listed for sale (value and profit at ask). Holdings by metal (items, weight, cost, average cost per ounce, melt), with ▸ to open each metal's types; metals aren't added together. *Needs attention* list. Tracking and spot status. | ⟳ Live prices, ⟳ Sync tracking, ➕ Add to TrackingApp, Reports |
 | **Inventory** | Every item with on hand, incoming, sell pending, bought, sold, avg cost, on-hand cost, sold $, realized P/L, ounces, melt and for sale. Products with several serials fold under a bold row (▸). Yellow = has open trades; red = oversold. Type (Vintage, Modern, Art, Generic, Sovereign, Pour or your own) has its own column and filter. | ＋ New item, Buy more…, Sell selected…, List for sale…, Edit, History, Picture, Delete |
 | **For Sale** | What you have listed and can still sell: qty for sale, ask, cost, profit at ask, margin, over melt. Products fold under a bold row; select it to act on all its serials. Yellow = no ask price; red = ask below cost. | Sell selected…, Edit listing…, Item details, ✨ AI price check, Price details, Take off sale |
-| **Pending Trades** | Open buys and sells, from payment to delivery. Pink = no items linked; green = delivered. | ＋ New buy / sell, Edit, $ Payment Completed, ✔ Trade Completed, ➕ Add to ParcelApp, ⟳ Sync tracking, Track, Post, 🖨 Packing slips, More (Partly delivered, Lost, Cancel, Delete) |
+| **Pending Trades** | Open buys and sells, from payment to delivery. Pink = no items linked; green = delivered. | ＋ New buy / sell, Edit, $ Payment Completed, ✔ Trade Completed, ➕ Add to TrackingApp, ⟳ Sync tracking, Track, 🖨 Packing slips, More (Open post / order link, Partly delivered, Lost, Cancel, Delete) |
 | **Trade History** | Finished trades (completed, lost, cancelled) and the profit on every sale. *By trade*: one row per trade with total, cost, P/L, shipping gain or cost, payment and tracking. *By item sold*: one row per item with qty, sale price, cost basis, P/L, margin, buyer, payment. Footer: P/L − expenses = net. | By trade / By item sold, View / edit, Reopen, Return / refund…, Open link, Delete, From / To, This year |
 | **Reports** | Month-by-month P&L for a year or all years: sales, cost of sales, lost buys, gross P/L, each expense category, net P/L, buys. Chart of net P/L per month. Sales broken down by metal, channel, counterparty or item. | Year, click a month or bar, Sales by, Export CSV… |
 | **Counterparties** | Everyone you trade with, grouped by type with totals (counterparties, trades, open, bought from, sold to, last trade). ▸ opens a type. | ＋ New counterparty, Edit, Show trades, ＋ Buy from, ＋ Sell to, Delete |
@@ -135,7 +135,7 @@ flowchart LR
     AP -- "you ship first" --> SF
     PC -- "save the tracking number" --> TP
     SF -- "save the tracking number" --> TP
-    TP -- "ParcelApp sync" --> DL
+    TP -- "tracking sync" --> DL
     DL -- "you check it, then ✔" --> TC
     TP -. "never arrived" .-> LO
     OPEN -. "deal fell through" .-> CA
@@ -143,7 +143,7 @@ flowchart LR
 ```
 
 Sells start at **Awaiting Payment** and buys at **Payment Completed**. Saving a tracking number moves either to
-**Trade Pending**, and a ParcelApp sync marks **Delivered**. Only the three statuses on the right are final.
+**Trade Pending**, and a tracking sync marks **Delivered**. Only the three statuses on the right are final.
 
 While a trade is open, a buy counts as **Incoming** and a sell as **Sell pending**. A pending sell stays on hand but is
 no longer *available*, so it can't be sold twice. **Reopen** in Trade History sends a trade back to Pending and undoes
@@ -173,7 +173,7 @@ its effect.
    now show as **Incoming**.
 6. When the seller sends tracking, edit the trade, paste it and choose the shipping method. Status becomes
    **Trade Pending**.
-7. Click **➕ Add to ParcelApp** (see [Shipping and ParcelApp](#shipping-and-parcelapp)). Syncs update the status;
+7. Click **➕ Add to TrackingApp** (see [Shipping and tracking](#shipping-and-tracking)). Syncs update the status;
    delivery turns the row green.
 8. Check the package, then **✔ Trade Completed**. On-hand qty and average cost update, and the trade moves to Trade
    History.
@@ -193,7 +193,7 @@ one.
    shipping or an offer that includes it). Save. The items now show as **Sell pending**.
 3. Status starts at **Awaiting Payment**. When paid, click **$ Payment Completed**.
 4. Print a packing slip (Pending Trades → **🖨 Packing slips**), pack and ship, add the tracking number, then
-   **➕ Add to ParcelApp**.
+   **➕ Add to TrackingApp**.
 5. After delivery and the buyer's confirmation, **✔ Trade Completed**. The sale, cost basis and P/L are recorded, on
    hand goes down, and the listing goes down by the qty sold.
 
@@ -291,20 +291,31 @@ serial with its own photo can also have *This serial's picture*, shown instead o
 4. Optional: **✨ AI price check** (up to 10 listings) researches dealer asks and recent sold prices; **Price details**
    shows sources and a *Use as ask* button. Check the links before trusting it.
 
-### Shipping and ParcelApp
+### Shipping and tracking
 
-- Saving a tracking number never calls ParcelApp. Rows show *not added* until you click **➕ Add to ParcelApp**, which
-  adds the selected (or all waiting) trades. Budget: 20 adds a day, failed ones included.
-- **⟳ Sync tracking** reads all recent deliveries in one call (20 an hour). It runs when the app opens too, and
-  every hour or 2 hours if you set *Sync tracking* in Settings. Numbers you added in the Parcel app directly are
-  picked up as added.
-- **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so
-  ParcelApp never holds what's in a package or who it's for. Set your own labels in Settings → ParcelApp →
-  *Delivery names*: something you'll recognise in the Parcel app (an arrow or a symbol works well), not a word
-  like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in Pending
-  Trades.
-- The carrier comes from the shipping method: UPS, FedEx, otherwise USPS. Failed adds appear under *Needs attention*
-  and are never retried automatically.
+The app adds your tracking numbers to a package-tracking service and reads back their delivery status, so you
+can follow packages in that service's own app on your phone too. Pick the service in Settings → *TrackingApp*
+→ *Service* and paste its API key underneath. Integrations with several services are in progress and will be
+completed over time; the *Service* list shows which ones are ready.
+
+- The app syncs once when it opens and whenever you click **⟳ Sync tracking**. To sync on its own as well, set
+  Settings → *TrackingApp* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
+- Each service limits how many numbers you can add a day and how often you can sync. The app counts its own calls
+  and won't make one that would go over, so an add is never wasted. Settings shows how many you've used.
+- Saving a tracking number sets the trade to **Trade Pending** but doesn't add it to the service yet. The trade
+  shows "not added" until you click **➕ Add to TrackingApp**, which adds the selected trades (or all waiting ones)
+  after you confirm.
+- A sync marks as added any number the service already has, so numbers you added in the service's app yourself
+  don't need adding again.
+- A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
+- The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
+- **Only the bare minimum leaves the app:** the tracking number, the carrier and a short delivery name. Never the
+  counterparty, address, items or prices, whichever service you use.
+- **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so the
+  service never holds what's in a package or who it's for. Set your own labels in Settings → *TrackingApp* →
+  *Delivery names*: something you'll recognise in the tracking app on your phone (an arrow or a symbol works well),
+  not a word like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in
+  Pending Trades.
 
 ### Expenses
 
@@ -367,13 +378,13 @@ deals the moment they're agreed.
 
 ### Every day
 
-- [ ] Open the app. It loads spot prices and syncs ParcelApp when it opens (and on a timer, if you set one).
+- [ ] Open the app. It loads spot prices and syncs tracking when it opens (and on a timer, if you set one).
 - [ ] Dashboard → read *Needs attention* (failed adds, delivered trades waiting for completion, unpaid and unlinked
   trades).
 - [ ] Record every deal agreed since yesterday as a new buy or sell, with the counterparty type set.
 - [ ] Mark trades paid with **$ Payment Completed** as payments land.
 - [ ] Print packing slips for today's sells, then paste new tracking numbers into their trades and click
-  **➕ Add to ParcelApp** once for all of them (watch the 20-a-day limit).
+  **➕ Add to TrackingApp** once for all of them (watch your service's daily limit).
 - [ ] Green (delivered) rows: inspect buys, confirm sells with buyers, then **✔ Trade Completed**.
 - [ ] Add any expense you paid today (labels, supplies, fees).
 
@@ -417,7 +428,7 @@ order.
 | On hand didn't change after a deal | Trade still open | Pending Trades → **✔ Trade Completed** |
 | Row is pink on Pending Trades | Trade with no items linked | Open it and add its item lines |
 | Item shows red in Inventory | Sold more than bought (often a buy not completed, or completed after the sale) | Complete the buy; check for a missing buy |
-| **Add to ParcelApp** refuses | 20 adds used in the last 24 hours | Wait; the rest stay queued |
+| **Add to TrackingApp** refuses | The service's daily add limit is used up | Wait; the rest stay queued |
 | Delivered row never completes | Completion is manual by design | Inspect, then **✔ Trade Completed** |
 | Can't delete an item | It's on a real trade | Remove it from those trades (the message lists them) or delete the trades |
 | Serial split refused | More serials than units bought, part already sold, or a serial used elsewhere | Fix the count, or add serials one item at a time |

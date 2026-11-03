@@ -42,6 +42,10 @@ You never type how many of something you have. The app works it out from your tr
 
 ## Dashboard
 
+![The Dashboard](images/dashboard.png)
+
+*The Dashboard (practice data): value cards across the top, holdings by metal, and the trades that need you under Needs attention.*
+
 - **Action row:** ⟳ Live prices, ⟳ Sync tracking, ➕ Add to ParcelApp and Reports, with spot price and ParcelApp
   status on the right.
 - **Cards:** units, cost basis, melt value, melt − cost, total sold, realized P/L, expenses, net P/L this year and this
@@ -54,6 +58,11 @@ You never type how many of something you have. The app works it out from your tr
 ## Inventory
 
 Every item has a metal, name, mint, weight, grade and, optionally, a serial number, type and picture.
+
+
+![The Inventory page](images/inventory.png)
+
+*Inventory: yellow rows have open trades. *On hand* shows how many are still available in brackets when some are promised on an open sell, e.g. 13 (7 avail.).*
 
 ### Weights and ounces
 
@@ -102,6 +111,11 @@ metal, name, mint, weight and grade count as one **product**.
 Start a trade from the **Trade** menu, the Quick actions or the buttons on each page. Pick existing items (or
 *New item…* on a buy), set the quantity and the unit price, and choose the counterparty.
 
+
+![A sell in the trade window](images/sell-dialog.png)
+
+*A sell in the trade window: the trade's details at the top, its items below. Inventory only changes once the status is Trade Completed.*
+
 | Step | Buy | Sell |
 |---|---|---|
 | 1. Create | pick items, set qty and unit price | pick items, set qty and sell price |
@@ -128,6 +142,11 @@ Start a trade from the **Trade** menu, the Quick actions or the buttons on each 
 
 Your open trades. Right-click a trade (or use **More ▾**) for the less common actions.
 
+
+![The Pending Trades page](images/pending-trades.png)
+
+*Pending Trades: green rows are delivered and waiting for you to check the package and click ✔ Trade Completed.*
+
 - **Partly delivered…:** when only part of a trade arrives (or ships), enter how many of each line arrived. That part
   is completed on the original trade, and the rest moves to a new open trade with the same details. Add the second
   tracking number to the new trade when it ships.
@@ -143,9 +162,27 @@ ticked. **Print selected** opens a 4x6 page in your browser with its print dialo
   split across two labels.
 - Print to your label printer at **4x6, scale 100%**.
 
+
+![Choosing sells to print](images/packing-slips-dialog.png)
+
+*Pick the sells to pack. The ones you had selected in Pending Trades are already chosen.*
+
+![A 4x6 packing slip label](images/packing-slip-label.png)
+
+*Four sells on one 4x6 label: username, tracking (or *no tracking* yet), then one line per item, with a ✂ cut line between slips.*
+
 ## Trade History
 
 Finished trades. A From / To date range applies to both views:
+
+
+![Trade History by trade](images/trade-history.png)
+
+**By trade*: one row per trade with its cost, P/L and shipping result. Red rows lost money (here, a lost buy). **?** in Ship +/− means the label cost hasn't been uploaded yet.*
+
+![Trade History by item sold](images/trade-history-by-item.png)
+
+**By item sold*: one row per item sold, so you can sort every sale by item, margin or buyer.*
 
 - **By trade:** one row per trade, buys and cancelled trades included. ▸ opens a trade's items, each with its own
   price, cost and P/L. Search also finds items and serials inside a trade.
@@ -195,6 +232,11 @@ need Parcel Premium and an API key from web.parcelapp.net. Paste the key into **
 Everything you've listed for sale and can still sell, with qty, asking price, cost, profit at ask, margin and premium
 over melt.
 
+
+![The For Sale page](images/for-sale.png)
+
+*For Sale: what's listed and can still be sold. *For sale* is what's left after open sells use up the listing.*
+
 - **To list:** select items on Inventory and click **List for sale…**, then enter the quantity and the asking price per
   unit. Select several to list them all at one price; leave the price blank to keep each item's own.
 - **Colors:** yellow rows have no asking price yet; red rows are asking less than they cost.
@@ -208,6 +250,10 @@ over melt.
 
 ## Counterparties
 
+![The Counterparties page](images/counterparties.png)
+
+*Counterparties, grouped by type with totals. ▸ opens a type to list everyone in it.*
+
 Everyone you trade with, grouped by type: Reddit (P2P), eBay, Whatnot, Online (dealers), Coin Shop, Coin Show, and
 Initial Import for sales imported from your spreadsheet. Each shows its address, number of trades, open trades,
 amounts bought and sold, and last trade date.
@@ -219,6 +265,10 @@ amounts bought and sold, and last trade date.
 - **Show trades**, **＋ Buy from** and **＋ Sell to** start from the selected counterparty.
 
 ## Expenses and shipping labels
+
+![The Expenses page](images/expenses.png)
+
+*Expenses: ⇄ rows come from trades and label files. Shipping collected from a buyer shows as a negative amount, because it offsets what you spent.*
 
 The **Expenses** page records costs that aren't part of a trade: Shipping (mailers, postage), Materials (capsules,
 flips), Fees and Other. Each expense can be linked to a trade.
@@ -249,6 +299,11 @@ shipping). What a label really cost comes from your label provider's export file
 
 Profit and loss month by month, for one year or all years (Ctrl+6).
 
+
+![The Reports page](images/reports.png)
+
+*Reports: the year's totals, net P/L per month (click a bar to break that month down), the monthly table and sales by metal.*
+
 - **Cards:** sales, gross P/L, expenses, net P/L and money spent on buys.
 - **Chart:** net P/L per month, green above zero and red below. Click a bar to break that month down.
 - **Monthly table:** sales, cost of sales, lost buys written off, gross P/L and margin, each expense category, net
@@ -275,6 +330,10 @@ Google AI Pro subscription doesn't include an API key.) Settings shows this mont
   AI Studio); the first 5,000 searches a month are free.
 
 ## Settings, backups and your data
+
+![The Settings page](images/settings.png)
+
+*Settings: API keys and the tracking timer, spot prices and their refresh, and where your data and backups go.*
 
 - **API keys** (ParcelApp, Gemini) are stored encrypted so that only your Windows account on this PC can read them. The
   box is never pre-filled; paste a new key and click *Save key*, or *Remove key*.

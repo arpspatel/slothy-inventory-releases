@@ -47,6 +47,11 @@ ounces and spot $/lb ÷ 16.
 
 Setup takes about 15 minutes: install the app, add two keys, check spot prices, and make a backup.
 
+
+![The Settings page](images/settings.png)
+
+*Settings: the ParcelApp and Gemini keys at the top, spot prices in the middle, your data and backups at the bottom.*
+
 1. **Install the app.** Download `SlothyInventorySetup-<version>.exe` from the
    [latest release](https://github.com/arpspatel/slothy-inventory-releases/releases/latest) and run it. If Windows shows
    a SmartScreen warning, click **More info** → **Run anyway**; it appears because the installer isn't code-signed.
@@ -79,6 +84,10 @@ app, use Windows Settings → Apps → Installed apps. Your database stays in `D
 yourself.
 
 ## Pages
+
+![The Dashboard](images/dashboard.png)
+
+*The Dashboard, with the nine pages in the sidebar on the left (practice data).*
 
 Nine pages sit in the left-hand sidebar (Ctrl+1 to Ctrl+9). Pending Trades is where you work each day; the rest are
 for looking things up and reporting.
@@ -150,6 +159,10 @@ its effect.
 
 ### Buying
 
+![A buy in the trade window](images/buy-dialog.png)
+
+*A buy: counterparty, status, shipping and payment at the top; the items you're buying, with qty and unit price, below.*
+
 1. Pending Trades → **＋ New buy** (Ctrl+B), or Inventory → select the item → **Buy more…**.
 2. Pick or type the counterparty and its type. A new name is registered automatically.
 3. Add lines: pick an item (or *New item…*), qty, unit price → **Add line**. For a serialised product, pick the ▣
@@ -169,6 +182,10 @@ To change an item on a trade, select its line and use **Remove selected line** (
 one.
 
 ### Selling
+
+![A sell in the trade window](images/sell-dialog.png)
+
+*A sell waiting for payment: Paid? says *Not paid yet* until you click $ Payment Completed.*
 
 1. Pending Trades → **＋ New sell** (Ctrl+S), or Inventory / For Sale → select items → **Sell selected…**. For a
    product, you pick which serials go (listed ones first).
@@ -193,6 +210,11 @@ unpaid trade asks whether to mark it paid or keep showing the payment as owed.
 **Packing slips.** **🖨 Packing slips** lists the open sells not yet delivered. **Print selected** opens a 4x6 page:
 each sell is a slip with **username · name · tracking**, then one line per item. As many slips as fit go on each
 label, with a dashed ✂ cut line between them. Print at 4x6, scale 100%.
+
+
+![A 4x6 packing slip label](images/packing-slip-label.png)
+
+*One 4x6 label with four slips. Cut along the ✂ lines; a slip is never split across two labels.*
 
 ### A worked example
 
@@ -313,6 +335,11 @@ These files include recipients' names, so don't share them.
 ### Reports
 
 Reports shows how each month went. Pick a year, or All years, at the top.
+
+
+![The Reports page](images/reports.png)
+
+*Reports for the year: totals, net P/L per month and the monthly table.*
 
 - **Net P/L** = sales − cost of sales − lost buys written off − expenses, including shipping and fees typed on trades.
 - A sale counts in the month it was completed. Open trades don't count until you mark them Trade Completed.

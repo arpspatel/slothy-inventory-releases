@@ -11,6 +11,9 @@ Windows desktop app for tracking a precious-metals inventory: buys and sells, tr
 **New here?** Read [how the workflow works](WORKFLOW.md): recording buys and sells from start to finish, and how
 they change your inventory, cost and profit. The [user guide](GUIDE.md) covers each page of the app.
 
+
+![The Dashboard](images/dashboard.png)
+
 ## Download
 
 Get **`SlothyInventorySetup-<version>.exe`** from the [latest release](../../releases/latest).

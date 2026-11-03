@@ -8,7 +8,8 @@ Windows desktop app for tracking a precious-metals inventory: buys and sells, tr
 
 © 2026 Neebu LLC. All rights reserved. This repository only hosts the installer; the source code is not public.
 
-**New here?** Read the [user guide](GUIDE.md) for how to use each page of the app.
+**New here?** Read [how the workflow works](WORKFLOW.md): recording buys and sells from start to finish, and how
+they change your inventory, cost and profit. The [user guide](GUIDE.md) covers each page of the app.
 
 ## Download
 

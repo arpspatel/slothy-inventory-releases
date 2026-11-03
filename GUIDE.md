@@ -1,6 +1,7 @@
 # Slothy Inventory Manager: user guide
 
-How to use the app, page by page. To install it, see the [README](README.md).
+How to use the app, page by page. For a start-to-finish walkthrough of recording buys and sells, see
+[how the workflow works](WORKFLOW.md). To install the app, see the [README](README.md).
 
 - [Getting started](#getting-started)
 - [The basics: quantities come from trades](#the-basics-quantities-come-from-trades)

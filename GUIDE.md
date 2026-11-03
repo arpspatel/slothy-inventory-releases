@@ -223,9 +223,11 @@ need Parcel Premium and an API key from web.parcelapp.net. Paste the key into **
   adding again.
 - A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
-- Deliveries are named so they group nicely in ParcelApp: **B** or **S** (buy or sell), the trade date, then the
-  platform and username, like `S:10-27/RDDT/buyer123` or `B:10-27/EBY/seller456`. Dealers and shops use their
-  4-character code instead, like `B:10-27/APMX`.
+- **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so
+  ParcelApp never holds what's in a package or who it's for. Set your own labels in Settings → ParcelApp →
+  *Delivery names*: something you'll recognise in the Parcel app (an arrow or a symbol works well), not a word
+  like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in Pending
+  Trades.
 
 ## For Sale
 
@@ -259,8 +261,8 @@ Initial Import for sales imported from your spreadsheet. Each shows its address,
 amounts bought and sold, and last trade date.
 
 - Everyone on a trade is added automatically, with the address from their latest trade.
-- Common dealers (APMEX, BOLD, JM Bullion, Monument Metals, SD Bullion, Scottsdale Mint, Costco) come with a
-  4-character **code** used for ParcelApp names. Change a code in **Edit**.
+- Common dealers (APMEX, BOLD, JM Bullion, Monument Metals, SD Bullion, Scottsdale Mint, Costco) are already
+  listed. Delete any you don't use.
 - Renaming a counterparty renames them on all their trades. Someone with trades can be renamed but not deleted.
 - **Show trades**, **＋ Buy from** and **＋ Sell to** start from the selected counterparty.
 

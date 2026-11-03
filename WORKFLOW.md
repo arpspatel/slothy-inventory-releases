@@ -28,7 +28,7 @@ gold-api.com for spot prices, Gemini for the optional AI features, and GitHub to
 | **Product** | Serialised items with the same metal, name, mint, weight and grade. Inventory folds them under one bold row. |
 | **Trade** | A Buy or a Sell, with a counterparty, date, item lines (qty × unit price), shipping, fees, tracking and status. |
 | **Status** | Where a trade is in its workflow: open (Pending Trades) or final (Trade History). See [Workflows](#workflows). |
-| **Counterparty** | Who you trade with. Its type (Reddit (P2P), eBay, Whatnot, Online, Coin Shop, Coin Show) decides its ParcelApp name. |
+| **Counterparty** | Who you trade with, with a type: Reddit (P2P), eBay, Whatnot, Online, Coin Shop or Coin Show. |
 | **Your numbers** | Worked out again on every refresh from all final trades: on-hand qty, average cost, sold qty, revenue, cost of goods sold, realized P/L. |
 | **Expenses** | Shipping, materials, fees and other costs. Never part of an item's cost; subtracted from P/L in Trade History and Reports. |
 
@@ -298,8 +298,11 @@ serial with its own photo can also have *This serial's picture*, shown instead o
 - **⟳ Sync tracking** reads all recent deliveries in one call (20 an hour). It runs when the app opens too, and
   every hour or 2 hours if you set *Sync tracking* in Settings. Numbers you added in the Parcel app directly are
   picked up as added.
-- Delivery names: `B:10-28/EBY/exampleuser` for Reddit (RDDT), eBay (EBY) and Whatnot (WNOT) counterparties;
-  `B:10-28/APMX` for Online, Coin Shop and Coin Show, using the counterparty's 4-character code.
+- **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so
+  ParcelApp never holds what's in a package or who it's for. Set your own labels in Settings → ParcelApp →
+  *Delivery names*: something you'll recognise in the Parcel app (an arrow or a symbol works well), not a word
+  like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in Pending
+  Trades.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS. Failed adds appear under *Needs attention*
   and are never retried automatically.
 
@@ -351,9 +354,10 @@ Reports shows how each month went. Pick a year, or All years, at the top.
 
 ### Counterparties
 
-- Created automatically from trades. Set the type correctly: it drives the ParcelApp name.
-- Online dealers carry a 4-character code (APMEX = APMX, BOLD, JM Bullion = JMBL, Monument Metals = MONU, SD Bullion =
-  SDBL, Scottsdale Mint = SCMT, Costco = COST). Change codes in **Edit**.
+- Created automatically from trades, with the type you pick on the trade (it groups them on this page and in
+  Reports' *Sales by channel*).
+- Common online dealers (APMEX, BOLD, JM Bullion, Monument Metals, SD Bullion, Scottsdale Mint, Costco) are already
+  listed. Delete any you don't use.
 - **Show trades** jumps to that counterparty's trades; **＋ Buy from** / **＋ Sell to** starts a trade pre-filled.
 
 ## Daily and weekly routine
@@ -403,7 +407,7 @@ order.
 - Never type quantities onto items; record a trade instead.
 - One serial per item. Typing several serials into one item is only for splitting an item you already bought.
 - Shipping and fees are expenses. Don't fold them into the unit price.
-- Set the counterparty type when you create the trade; the ParcelApp name is fixed when the delivery is added.
+- Pick delivery-name labels that mean nothing to anyone else, and don't share them.
 - Close the app before copying, moving or restoring the database file.
 
 ### Common problems

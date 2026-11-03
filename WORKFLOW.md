@@ -64,7 +64,9 @@ Setup takes about 15 minutes: install the app, add two keys, check spot prices, 
    *Spot prices* → **Save prices**. Copper is $/lb; the others are $/troy oz.
 6. **Back up.** Click **Back up now…**. Better still, put the database in a OneDrive or Dropbox folder with
    **Move database…** for an automatic off-PC copy. The app also saves its own copies in a `backups` folder next to
-   the database (each day you open it, before any delete and before each update), but those stay on this PC.
+   the database (each day you open it, before any delete and before each update). To keep a second copy off this
+   PC too, set Settings → *Extra backup folder* → **Choose folder…** (a NAS share or a USB drive): every automatic
+   backup is also copied there.
 
 Keys are encrypted for your Windows account. A copy of the database on another PC or account won't carry working keys;
 enter them again there.
@@ -89,7 +91,7 @@ for looking things up and reporting.
 | **Reports** | Month-by-month P&L for a year or all years: sales, cost of sales, lost buys, gross P/L, each expense category, net P/L, buys. Chart of net P/L per month. Sales broken down by metal, channel, counterparty or item. | Year, click a month or bar, Sales by, Export CSV… |
 | **Counterparties** | Everyone you trade with, grouped by type with totals (counterparties, trades, open, bought from, sold to, last trade). ▸ opens a type. | ＋ New counterparty, Edit, Show trades, ＋ Buy from, ＋ Sell to, Delete |
 | **Expenses** | Shipping, materials, fees, other. Shipping and fees from trades, and label costs from uploaded files, show here automatically. Totals by category. | Add, edit, delete; date filter; Shipping labels… |
-| **Settings** | API keys, price-check sites, manual spot prices, data location and backups, API usage. | Save key, Save prices, Move database…, Back up now…, Open backups |
+| **Settings** | API keys, price-check sites, manual spot prices, data location and backups (with an optional extra backup folder), API usage. | Save key, Save prices, Move database…, Back up now…, Open backups, Choose folder… |
 
 **By trade vs By item sold.** By trade includes buys, cancelled trades and shipping details. By item sold has only
 sales and lost trades, so you can sort every sale by item or margin across trades. Both use the same numbers, so the
@@ -346,7 +348,8 @@ deals the moment they're agreed.
 - [ ] Pending Trades: anything stuck for more than a week? Chase it, or mark Lost/No Refund or Cancel.
 - [ ] For Sale: update ask prices; take sold-out or stale listings off.
 - [ ] Inventory: scan for red (oversold) or yellow rows that shouldn't still be open.
-- [ ] Settings → **Back up now…** (unless the database lives in OneDrive or Dropbox).
+- [ ] Settings → **Back up now…** (unless the database lives in OneDrive or Dropbox, or an extra backup folder is
+  set).
 
 ### Every month or quarter
 
@@ -385,6 +388,7 @@ order.
 | Can't delete an item | It's on a real trade | Remove it from those trades (the message lists them) or delete the trades |
 | Serial split refused | More serials than units bought, part already sold, or a serial used elsewhere | Fix the count, or add serials one item at a time |
 | Spot prices are 0 or stale | gold-api.com unreachable | **⟳ Live prices**, or type them in Settings |
+| "Extra backup folder" warning when the app opens | The NAS or drive was offline or unplugged | Nothing to do: your normal backup was made, and the copy catches up next time. Or **Clear** the folder in Settings |
 | Keys missing on another PC | Keys are encrypted per Windows account | Enter them again in Settings |
 | "Something went wrong" message | An unexpected error; the last action may not have saved | Check what you just did. Details are in `error-log.txt` in `Documents\InventoryApp` |
 | Update check fails with a connection error | A firewall is blocking the app | Allow Slothy Inventory Manager in your firewall or antivirus, then **Help → Check for updates…** |
@@ -394,4 +398,4 @@ order.
 Close the app, then either copy the backup over `inventory.db` or use Settings → **Open / new database…** to point at
 the backup file. Automatic backups are in the `backups` folder next to the database (**Open backups** in Settings):
 one for each day you opened the app (up to 30), one before each delete (up to 20) and one before each update (up to
-10).
+10). With an extra backup folder set, the same copies are there too, so you can restore from it if this PC fails.

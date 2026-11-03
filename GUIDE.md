@@ -281,6 +281,10 @@ Google AI Pro subscription doesn't include an API key.) Settings shows this mont
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app
   (last 30 kept), before anything is deleted (last 20) and before each update (last 10). *Open backups* shows them. To
   restore one, close the app and copy it over `inventory.db`, or use **File → Open / new database…**.
+- **Extra backup folder:** Settings → Data location → *Extra backup folder* → **Choose folder…** (for example a
+  NAS share or a USB drive). Every automatic backup is then also copied there, with the same limits. Leave it
+  blank to keep backups only next to the database. If the folder can't be reached, your normal backup is still
+  made, the app tells you, and today's copy goes there the next time the app opens. **Clear** turns it off.
 - **Data location:** shows where your database is, with *Open folder*, *Move database…*, *Open / new database…* and
   *Back up now…*. The app remembers the location. If that folder is missing (for example, an unplugged drive), it
   warns you and opens the default one.

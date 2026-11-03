@@ -34,9 +34,6 @@ the publisher.
 
 Version numbers are the build date and time: `YY.MM.DD.HHMM`.
 
-If you have version 26.11.03.1100 or earlier (including 1.0.0, then called *Slothy Inventory App*), install the latest
-release by hand once. It updates itself from then on.
-
 ## Your data
 
 The app keeps everything in `Documents\InventoryApp\inventory.db` on your own PC. Nothing is uploaded.

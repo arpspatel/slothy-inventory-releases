@@ -8,16 +8,19 @@ Windows desktop app for tracking a precious-metals inventory: buys and sells, tr
 
 © 2026 Neebu LLC. All rights reserved. This repository only hosts the installer; the source code is not public.
 
+**New here?** Read the [user guide](GUIDE.md) for how to use each page of the app.
+
 ## Download
 
 Get **`SlothyInventorySetup-<version>.exe`** from the [latest release](../../releases/latest).
 
 ## Install
 
-1. Run the installer. No admin rights are needed: it installs for your Windows user only, with a Start menu entry
-   and an optional desktop shortcut.
-2. The installer isn't code-signed yet, so Windows SmartScreen may say *"Windows protected your PC"*. Click
-   **More info → Run anyway**.
+1. Run the installer. The installer isn't code-signed yet, so Windows SmartScreen may say *"Windows protected your
+   PC"*. Click **More info → Run anyway**.
+2. Choose **Install for me only** (the default, no admin rights needed) or **Install for all users** (asks for admin
+   permission, installs to Program Files). Either way you get a Start menu entry and an optional desktop shortcut.
+   Each Windows user keeps their own data.
 
 Windows 10/11, 64-bit.
 
@@ -30,8 +33,8 @@ the publisher.
 
 Version numbers are the build date and time: `YY.MM.DD.HHMM`.
 
-If you have version 1.0.0 (then called *Slothy Inventory App*), install the latest release by hand once. It updates
-itself from then on.
+If you have version 26.11.03.1100 or earlier (including 1.0.0, then called *Slothy Inventory App*), install the latest
+release by hand once. It updates itself from then on.
 
 ## Your data
 

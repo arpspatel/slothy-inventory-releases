@@ -175,7 +175,8 @@ expenses for the date range to give net P/L.
 The app can add your tracking numbers to [ParcelApp](https://parcelapp.net) and read back their delivery status. You
 need Parcel Premium and an API key from web.parcelapp.net. Paste the key into **Settings**.
 
-- Nothing runs on a timer. The app syncs once when it opens, and again only when you click **⟳ Sync tracking**.
+- The app syncs once when it opens and whenever you click **⟳ Sync tracking**. To sync on its own as well, set
+  Settings → ParcelApp → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
 - ParcelApp allows **20 adds a day** and **20 syncs an hour**. The app counts its own calls and won't make one that
   would go over, so an add is never wasted. Settings shows how many you've used.
 - Saving a tracking number sets the trade to **Trade Pending** but doesn't add it to ParcelApp yet. The trade shows
@@ -277,13 +278,17 @@ Google AI Pro subscription doesn't include an API key.) Settings shows this mont
 
 - **API keys** (ParcelApp, Gemini) are stored encrypted so that only your Windows account on this PC can read them. The
   box is never pre-filled; paste a new key and click *Save key*, or *Remove key*.
-- **Spot prices:** type prices by hand if live prices aren't available.
+- **Spot prices:** type prices by hand if live prices aren't available. *Refresh live prices every … minutes*
+  fetches them on its own while the app is open: 5 minutes or more, or **Off** (the default: only when the app
+  opens and on ⟳ Live prices).
+- **Sync tracking:** in the ParcelApp box, **Off** (the default), **Every hour** or **Every 2 hours**.
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app
   (last 30 kept), before anything is deleted (last 20) and before each update (last 10). *Open backups* shows them. To
   restore one, close the app and copy it over `inventory.db`, or use **File → Open / new database…**.
 - **Extra backup folder:** Settings → Data location → *Extra backup folder* → **Choose folder…** (for example a
-  NAS share or a USB drive). Every automatic backup is then also copied there, with the same limits. Leave it
-  blank to keep backups only next to the database. If the folder can't be reached, your normal backup is still
+  NAS share or a USB drive). Every automatic backup is then also copied there. *Keep the last … days there*
+  (7 by default) removes older ones from that folder so it doesn't fill up. Leave the folder blank to keep backups
+  only next to the database. If the folder can't be reached, your normal backup is still
   made, the app tells you, and today's copy goes there the next time the app opens. **Clear** turns it off.
 - **Data location:** shows where your database is, with *Open folder*, *Move database…*, *Open / new database…* and
   *Back up now…*. The app remembers the location. If that folder is missing (for example, an unplugged drive), it

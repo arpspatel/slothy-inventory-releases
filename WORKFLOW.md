@@ -56,17 +56,19 @@ Setup takes about 15 minutes: install the app, add two keys, check spot prices, 
    existing workbook; choose No to start empty. Settings → *Data location* shows the file in use, with
    **Open folder**, **Move database…**, **Open / new database…** and **Back up now…**.
 3. **Add the ParcelApp key.** Get it at web.parcelapp.net (needs Parcel Premium). Settings → *ParcelApp API key* →
-   **New key** → **Save key**. Limits: 20 syncs an hour, 20 adds a day.
+   **New key** → **Save key**. Limits: 20 syncs an hour, 20 adds a day. Optional: set *Sync tracking* to
+   **Every hour** or **Every 2 hours** so tracking updates on its own while the app is open.
 4. **Add the Gemini key (optional).** Only needed for AI spreadsheet import and ✨ AI price check. Create it free at
    [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Web-search price checks need a paid-tier key. Set
    your preferred price-check sites underneath.
 5. **Check spot prices.** Live prices load when the app opens. If they can't be fetched, type them in Settings →
-   *Spot prices* → **Save prices**. Copper is $/lb; the others are $/troy oz.
+   *Spot prices* → **Save prices**. Copper is $/lb; the others are $/troy oz. Optional: *Refresh live prices
+   every … minutes* (5 or more) keeps them current while the app is open.
 6. **Back up.** Click **Back up now…**. Better still, put the database in a OneDrive or Dropbox folder with
    **Move database…** for an automatic off-PC copy. The app also saves its own copies in a `backups` folder next to
    the database (each day you open it, before any delete and before each update). To keep a second copy off this
    PC too, set Settings → *Extra backup folder* → **Choose folder…** (a NAS share or a USB drive): every automatic
-   backup is also copied there.
+   backup is also copied there, and *Keep the last … days there* (7 by default) stops it filling up.
 
 Keys are encrypted for your Windows account. A copy of the database on another PC or account won't carry working keys;
 enter them again there.
@@ -271,8 +273,9 @@ serial with its own photo can also have *This serial's picture*, shown instead o
 
 - Saving a tracking number never calls ParcelApp. Rows show *not added* until you click **➕ Add to ParcelApp**, which
   adds the selected (or all waiting) trades. Budget: 20 adds a day, failed ones included.
-- **⟳ Sync tracking** reads all recent deliveries in one call (20 an hour). It runs when the app opens too. Numbers you
-  added in the Parcel app directly are picked up as added.
+- **⟳ Sync tracking** reads all recent deliveries in one call (20 an hour). It runs when the app opens too, and
+  every hour or 2 hours if you set *Sync tracking* in Settings. Numbers you added in the Parcel app directly are
+  picked up as added.
 - Delivery names: `B:10-28/EBY/exampleuser` for Reddit (RDDT), eBay (EBY) and Whatnot (WNOT) counterparties;
   `B:10-28/APMX` for Online, Coin Shop and Coin Show, using the counterparty's 4-character code.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS. Failed adds appear under *Needs attention*
@@ -333,7 +336,7 @@ deals the moment they're agreed.
 
 ### Every day
 
-- [ ] Open the app. It loads spot prices and syncs ParcelApp once when it opens.
+- [ ] Open the app. It loads spot prices and syncs ParcelApp when it opens (and on a timer, if you set one).
 - [ ] Dashboard → read *Needs attention* (failed adds, delivered trades waiting for completion, unpaid and unlinked
   trades).
 - [ ] Record every deal agreed since yesterday as a new buy or sell, with the counterparty type set.

@@ -51,7 +51,7 @@ You never type how many of something you have. The app works it out from your tr
 - **Cards:** units, cost basis, melt value, melt − cost, total sold, realized P/L, expenses, net P/L this year and this
   month, buys pending (value on the way), sells pending (value and estimated profit) and listed for sale (value and
   profit at your asking price). **Cash** appears once the book has money in / out entries (see
-  [Separate books](#separate-books-for-example-a-partners-money)); click it to open them.
+  [Separate books](#separate-books-a-partners-money-a-personal-collection)); click it to open them.
 - **Holdings by metal and type:** one row per metal with items on hand, weight, cost, average cost per ounce and melt.
   ▸ opens its types.
 - **Needs attention:** open trades that are waiting on a step from you.
@@ -336,7 +336,7 @@ Google AI Pro subscription doesn't include an API key.) Settings shows this mont
   a *Use as ask* button. These are estimates, so check the links. Web search needs a paid-tier key (turn on billing in
   AI Studio); the first 5,000 searches a month are free.
 
-## Separate books (for example, a partner's money)
+## Separate books (a partner's money, a personal collection)
 
 A *book* is one database file. Keep money that must stay apart, such as a partner's investment, in a book of its own:
 its stock, average costs, profit and expenses never mix with your main one.
@@ -357,13 +357,12 @@ refunds and insurance received (less refunds given). A trade counts once it's pa
 app doesn't see your bank account, so compare it with the real balance now and then. A separate bank or PayPal
 account for the book makes that easy.
 
-**A piece moving between books:** record a sale in one book and a buy in the other at the price you agree.
-
-**Sharing a book with your partner:** with that book open, **File → Publish partner page…** puts a read-only web
-page of it online, with its Dashboard, Inventory, Reports and Trade History. It leaves out everyone you traded with,
-addresses, payment details, tracking numbers and notes. Publish again whenever you want the page brought up to date.
-Keep the page behind a login that only lets in the email addresses you choose. **File → Export partner view…** saves
-the same cleaned copy as a file instead.
+**Moving pieces between books** (for example, splitting off a personal collection): on the **Inventory** page,
+select the pieces (Ctrl/Shift-click for several) and click **Move to book…**. Pick the book (a new
+`personal-collection` book is offered the first time), set how many units of each to move, and click **Move**.
+They move at their average cost: this book shows a *Moved out* entry in Trade History with no sale and no profit or
+loss, and the other book gets a *Moved in* buy at the same cost. No money moves, so cash, sales and profit stay as
+they were, and the pieces' past trades stay in the book they were made in. Moving a piece back works the same way.
 
 ## Settings, backups and your data
 

@@ -50,7 +50,8 @@ You never type how many of something you have. The app works it out from your tr
   status on the right.
 - **Cards:** units, cost basis, melt value, melt − cost, total sold, realized P/L, expenses, net P/L this year and this
   month, buys pending (value on the way), sells pending (value and estimated profit) and listed for sale (value and
-  profit at your asking price).
+  profit at your asking price). **Cash** appears once the book has money in / out entries (see
+  [Separate books](#separate-books-for-example-a-partners-money)); click it to open them.
 - **Holdings by metal and type:** one row per metal with items on hand, weight, cost, average cost per ounce and melt.
   ▸ opens its types.
 - **Needs attention:** open trades that are waiting on a step from you.
@@ -334,6 +335,29 @@ Google AI Pro subscription doesn't include an API key.) Settings shows this mont
   sales, with links. Its suggested price shows in the **AI est./u** column, and **Price details** shows the sources with
   a *Use as ask* button. These are estimates, so check the links. Web search needs a paid-tier key (turn on billing in
   AI Studio); the first 5,000 searches a month are free.
+
+## Separate books (for example, a partner's money)
+
+A *book* is one database file. Keep money that must stay apart, such as a partner's investment, in a book of its own:
+its stock, average costs, profit and expenses never mix with your main one.
+
+1. **Make the book:** **File → Switch book → Open / new book…**, type a name such as `Partner-Investment` and
+   click Save. The app opens the new, empty book.
+2. **Record the money put in:** **Trade → Money in / out…** → *Put in*, the amount and a note → **Add**.
+   A **Cash** card then appears on that book's Dashboard.
+3. **Trade as usual,** but only with that money. Record its buys, sells and expenses in that book, and keep the
+   metal itself apart too (a labelled box), so a piece is never shipped against the wrong book's sale.
+4. **Switch between books:** **File → Switch book** lists the books you've opened, or click the **BOOK** box at the
+   top of the sidebar. The open book's name is shown there and in the title bar: check it before you save a trade.
+5. **Split the profit:** that book's **Reports** and Dashboard show its realized P/L and expenses. A payout is
+   **Money in / out… → Taken out**.
+
+**Cash** is what the book's money should be: put in − taken out − buys paid + sales received − expenses, plus
+refunds and insurance received (less refunds given). A trade counts once it's paid, and a cancelled one doesn't. The
+app doesn't see your bank account, so compare it with the real balance now and then. A separate bank or PayPal
+account for the book makes that easy.
+
+**A piece moving between books:** record a sale in one book and a buy in the other at the price you agree.
 
 ## Settings, backups and your data
 

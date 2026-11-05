@@ -359,6 +359,12 @@ account for the book makes that easy.
 
 **A piece moving between books:** record a sale in one book and a buy in the other at the price you agree.
 
+**Sharing a book with your partner:** with that book open, **File → Publish partner page…** puts a read-only web
+page of it online, with its Dashboard, Inventory, Reports and Trade History. It leaves out everyone you traded with,
+addresses, payment details, tracking numbers and notes. Publish again whenever you want the page brought up to date.
+Keep the page behind a login that only lets in the email addresses you choose. **File → Export partner view…** saves
+the same cleaned copy as a file instead.
+
 ## Settings, backups and your data
 
 ![The Settings page](images/settings.png)

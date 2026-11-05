@@ -364,6 +364,10 @@ They move at their average cost: this book shows a *Moved out* entry in Trade Hi
 loss, and the other book gets a *Moved in* buy at the same cost. No money moves, so cash, sales and profit stay as
 they were, and the pieces' past trades stay in the book they were made in. Moving a piece back works the same way.
 
+**Buying a piece for another book:** keep the buy in your main book, and in its trade window select the line and
+click **On arrival →… → Move to personal-collection when completed**. The **Then to** column shows the mark. When
+you complete the buy, the piece moves over at cost by itself, so all your trades stay in one book.
+
 ## Settings, backups and your data
 
 ![The Settings page](images/settings.png)

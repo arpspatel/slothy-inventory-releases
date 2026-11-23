@@ -224,6 +224,10 @@ completed over time; the *Service* list shows which ones are ready.
   after you confirm.
 - A sync marks as added any number the service already has, so numbers you added in the service's app yourself
   don't need adding again.
+- **Clearing out finished packages:** after **⟳ Sync tracking**, the app lists the packages the service still
+  has whose trades are all finished in the app (completed, lost or cancelled), and copies their tracking numbers
+  to the clipboard so you can find and remove them in the service's app. A package shared with a trade that's
+  still open isn't listed. Automatic syncs only mention the count in the status bar.
 - A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
 - **Only the bare minimum leaves the app:** the tracking number, the carrier and a short delivery name. Never the

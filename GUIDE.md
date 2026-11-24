@@ -240,23 +240,23 @@ completed over time; the *Service* list shows which ones are ready.
 
 ## For Sale
 
-Everything you've listed for sale and can still sell, with qty, asking price, cost, profit at ask, margin and premium
+**Available for Sale** shows what you can still sell: everything on hand, less units already on an open sell and units
+you're keeping. Each row has its available quantity, sell pending, asking price, cost, profit at ask, margin and premium
 over melt.
 
 
 ![The For Sale page](images/for-sale.png)
 
-*For Sale: what's listed and can still be sold. *For sale* is what's left after open sells use up the listing.*
+*Available for Sale: what can still be sold.*
 
-- **To list:** select items on Inventory and click **List for sale…**, then enter the quantity and the asking price per
-  unit. Select several to list them all at one price; leave the price blank to keep each item's own.
+- **Available** = on hand − sell pending − keeping. Example: 2 bars on hand, 1 kept and 1 on an open sell leaves 0, so
+  the item drops off this page. On hand and Keeping are on the Inventory page.
+- **Ask price…** sets the asking price per unit. Select several to give them all one price.
+- **Keep…** marks items or units as not for sale; they come off this page but stay in your inventory.
 - **Colors:** yellow rows have no asking price yet; red rows are asking less than they cost.
-- **Sell selected…** starts one sell for the selected listings, with their quantities and prices filled in.
+- **Sell selected…** starts one sell for the selected items, with their available quantities and prices filled in.
   Double-click a Qty or Unit $ cell to change it. **Lot price…** splits one agreed total across the lines in
-  proportion to their value. Anything you don't sell stays listed.
-- An open sell uses up the listing first: list 5, start a sell for 2, and 3 show as for sale. When the sell is
-  completed, those units come off the listing. You can never list more than you have available.
-- **Take off sale** removes the listing.
+  proportion to their value. Anything you don't sell stays available.
 - **✨ AI price check** looks up current prices; see [AI features](#ai-features).
 
 ## Counterparties
@@ -382,7 +382,7 @@ you complete the buy, the piece moves over at cost by itself, so all your trades
   box is never pre-filled; paste a new key and click *Save key*, or *Remove key*.
 - **Spot prices:** type prices by hand if live prices aren't available. *Refresh live prices every … minutes*
   fetches them on its own while the app is open: 5 minutes or more, or **Off** (the default: only when the app
-  opens and on ⟳ Live prices).
+  opens and on ⟳ Live prices). If the first lookup fails because the network isn't ready yet, it retries on its own.
 - **TrackingApp:** pick the *Service* (more integrations are in progress), paste its key, and set *Sync
   tracking* to **Off** (the default), **Every hour** or **Every 2 hours**, and your *Delivery names*.
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app

@@ -241,8 +241,8 @@ completed over time; the *Service* list shows which ones are ready.
 ## For Sale
 
 **Available for Sale** shows what you can still sell: everything on hand, less units already on an open sell and units
-you're keeping. Each row has its available quantity, sell pending, asking price, cost, profit at ask, margin and premium
-over melt.
+you're keeping. Each row has its available quantity, sell pending, asking price, average cost per ounce, cost, profit at
+ask, margin and premium over melt.
 
 
 ![The For Sale page](images/for-sale.png)
@@ -251,6 +251,8 @@ over melt.
 
 - **Available** = on hand − sell pending − keeping. Example: 2 bars on hand, 1 kept and 1 on an open sell leaves 0, so
   the item drops off this page. On hand and Keeping are on the Inventory page.
+- **Avg cost/oz** is the average cost divided by the item's weight, in the same ounce as spot, so you can price
+  against spot. A product row divides its total cost by its total ounces.
 - **Ask price…** sets the asking price per unit. Select several to give them all one price.
 - **Keep…** marks items or units as not for sale; they come off this page but stay in your inventory.
 - **Colors:** yellow rows have no asking price yet; red rows are asking less than they cost.

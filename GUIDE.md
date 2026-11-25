@@ -182,19 +182,16 @@ account with a label service and its API token in Settings → *Shipping labels*
    ounces: box, packing and metal together. Tick *Signature confirmation* if you want it. The app remembers your last
    package.
 3. **Get rates** shows every carrier and service on your account, cheapest first.
-4. Pick one and the printer under *Then print on*, and click **Buy label**. After you confirm, the label is bought
-   and goes straight to that printer, with no browser or PDF viewer. Pick *Don't print, open the label* to open it
-   instead. The
-   trade gets the tracking number and carrier, moves to **Trade Pending**, and the label's cost goes into Shipping
+4. Pick one and click **Buy label**. After you confirm, the label is bought and saved as a 4x6 PDF (nothing prints
+   yet). The trade gets the tracking number and carrier, moves to **Trade Pending**, and the label's cost goes into Shipping
    labels on that trade, so it counts in your shipping P/L straight away.
 
 - Labels you buy this way are tracked through the label service, not your tracking service, and
   **⟳ Sync tracking** updates them too. They're never added to your tracking service, so they don't use its daily adds.
-- **Printers:** set your usual label printer in Settings → *Shipping labels* → *Label printer*; the label window
-  starts on the printer you used last, so switching between printers is one click. Set the label size (4x6) once in
-  the printer's own Windows preferences, and each label is scaled to fit it.
-- **Expenses → Shipping labels…:** select one or more bought labels and click *Print…* to send them all to a printer
-  in one go (Ctrl/Shift-click to choose several). *Open label* opens one. *Void label…* asks for a
+- **🖨 Print labels:** select one or more trades on Pending Trades (Ctrl/Shift-click to choose several) and click
+  **🖨 Print labels**. Their labels open together in one PDF, one label per page, so you print the whole batch from
+  your PDF viewer at once. Trades with no label bought in the app are named so you know which ones are missing.
+- **Expenses → Shipping labels…:** *Print labels* does the same for the bought labels you select there. *Open label* opens one. *Void label…* asks for a
   refund of a label you didn't use; the trade loses the tracking number and goes back to waiting to ship.
 - With a **test token** the labels are samples and nothing is charged. The dialog says TEST MODE.
 - The label service gets the buyer's name and address, because they're printed on the label. Nothing else leaves the
@@ -418,8 +415,8 @@ you complete the buy, the piece moves over at cost by itself, so all your trades
   opens and on ⟳ Live prices). If the first lookup fails because the network isn't ready yet, it retries on its own.
 - **TrackingApp:** pick the *Service* (more integrations are in progress), paste its key, and set *Sync
   tracking* to **Off** (the default), **Every hour** or **Every 2 hours**, and your *Delivery names*.
-- **Shipping labels:** paste your label service's API token, set your *Ship-from address* (it needs a phone number
-  and an email) and your *Label printer*. See [Buying shipping labels](#buying-shipping-labels).
+- **Shipping labels:** paste your label service's API token, and set your *Ship-from address* (it needs a phone number
+  and an email). See [Buying shipping labels](#buying-shipping-labels).
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app
   (last 30 kept), before anything is deleted (last 20) and before each update (last 10). *Open backups* shows them. To
   restore one, close the app and copy it over `inventory.db`, or use **File → Open / new database…**.

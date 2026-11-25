@@ -172,6 +172,29 @@ ticked. **Print selected** opens a 4x6 page in your browser with its print dialo
 
 *Four sells on one 4x6 label: username, tracking (or *no tracking* yet), then one line per item, with a ✂ cut line between slips.*
 
+### Buying shipping labels
+
+Select an open sell and click **🏷 Create label…** to buy its shipping label without leaving the app. You need an
+account with a label service and its API token in Settings → *Shipping labels*, plus your ship-from address.
+
+1. **Ship to** is filled in from the trade's address (or the counterparty's). Check it and fix anything missing.
+2. **Package:** pick a flat-rate envelope or box, or *Custom box* and type its size. Enter the weight in pounds and
+   ounces: box, packing and metal together. Tick *Signature confirmation* if you want it. The app remembers your last
+   package.
+3. **Get rates** shows every carrier and service on your account, cheapest first.
+4. Pick one and click **Buy label**. After you confirm, the label is bought and its PDF opens to print (4x6). The
+   trade gets the tracking number and carrier, moves to **Trade Pending**, and the label's cost goes into Shipping
+   labels on that trade, so it counts in your shipping P/L straight away.
+
+- Labels you buy this way are tracked through the label service, not your tracking service, and
+  **⟳ Sync tracking** updates them too. They're never added to your tracking service, so they don't use its daily adds.
+- **Expenses → Shipping labels…:** *Open label* opens a bought label again to reprint it. *Void label…* asks for a
+  refund of a label you didn't use; the trade loses the tracking number and goes back to waiting to ship.
+- With a **test token** the labels are samples and nothing is charged. The dialog says TEST MODE.
+- The label service gets the buyer's name and address, because they're printed on the label. Nothing else leaves the
+  app: no items, prices, notes or usernames.
+- Saved labels are in `Documents\InventoryApp\labels`.
+
 ## Trade History
 
 Finished trades. A From / To date range applies to both views:
@@ -230,6 +253,8 @@ completed over time; the *Service* list shows which ones are ready.
   still open isn't listed. Automatic syncs only mention the count in the status bar.
 - A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
+- Labels bought in the app ([Buying shipping labels](#buying-shipping-labels)) are tracked through the label service
+  instead, in the same sync.
 - **Only the bare minimum leaves the app:** the tracking number, the carrier and a short delivery name. Never the
   counterparty, address, items or prices, whichever service you use.
 - **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so the
@@ -380,13 +405,15 @@ you complete the buy, the piece moves over at cost by itself, so all your trades
 
 *Settings: API keys and the tracking timer, spot prices and their refresh, and where your data and backups go.*
 
-- **API keys** (tracking service, Gemini) are stored encrypted so that only your Windows account on this PC can read them. The
+- **API keys** (tracking service, Gemini, label service) are stored encrypted so that only your Windows account on this PC can read them. The
   box is never pre-filled; paste a new key and click *Save key*, or *Remove key*.
 - **Spot prices:** type prices by hand if live prices aren't available. *Refresh live prices every … minutes*
   fetches them on its own while the app is open: 5 minutes or more, or **Off** (the default: only when the app
   opens and on ⟳ Live prices). If the first lookup fails because the network isn't ready yet, it retries on its own.
 - **TrackingApp:** pick the *Service* (more integrations are in progress), paste its key, and set *Sync
   tracking* to **Off** (the default), **Every hour** or **Every 2 hours**, and your *Delivery names*.
+- **Shipping labels:** paste your label service's API token and set your *Ship-from address* (UPS and FedEx need a
+  phone number). See [Buying shipping labels](#buying-shipping-labels).
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app
   (last 30 kept), before anything is deleted (last 20) and before each update (last 10). *Open backups* shows them. To
   restore one, close the app and copy it over `inventory.db`, or use **File → Open / new database…**.

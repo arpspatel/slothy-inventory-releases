@@ -121,7 +121,7 @@ Start a trade from the **Trade** menu, the Quick actions or the buttons on each 
 |---|---|---|
 | 1. Create | pick items, set qty and unit price | pick items, set qty and sell price |
 | 2. Starting status | **Ship First/Trade** or **Payment Completed** (default) | **Awaiting Payment** (default), then **$ Payment Completed** |
-| 3. Tracking added | status becomes **Trade Pending**; click **➕ Add to TrackingApp** when ready | same |
+| 3. Tracking added | status becomes **Trade Pending**; the next tracking sync adds it to TrackingApp | same |
 | 4. In transit | a tracking sync updates the status and expected date | same |
 | 5. Delivered | sync sets **Delivered** (the row turns green); check the item | sync sets **Delivered**; confirm with the buyer |
 | 6. Complete | **✔ Trade Completed** (never automatic) | same |
@@ -189,8 +189,15 @@ account with a label service and its API token in Settings → *Shipping labels*
 - Labels you buy this way are tracked through the label service, not your tracking service, and
   **⟳ Sync tracking** updates them too. They're never added to your tracking service, so they don't use its daily adds.
 - **🖨 Print labels:** select one or more trades on Pending Trades (Ctrl/Shift-click to choose several) and click
-  **🖨 Print labels**. Their labels open together in one PDF, one label per page, so you print the whole batch from
-  your PDF viewer at once. Trades with no label bought in the app are named so you know which ones are missing.
+  **🖨 Print labels**. Their labels are put together, one per page, and the app's print window opens:
+  - a preview of each label (◀ ▶ to page through);
+  - **Printer**, and **Printer settings…** for that printer's own options (paper size, darkness, speed). Set the paper
+    to 4x6 once; the app remembers the settings for each printer, and the printer you used last;
+  - **Copies**, **All** labels or **This one**, **Fit to the paper**, and **Sharp black and white** (on for thermal
+    printers: each label is drawn at the printer's own resolution with crisp edges, so barcodes scan cleanly);
+  - **Open PDF** prints from your PDF viewer instead.
+
+  Trades with no label bought in the app are named so you know which ones are missing.
 - **Expenses → Shipping labels…:** *Print labels* does the same for the bought labels you select there. *Open label* opens one. *Void label…* asks for a
   refund of a label you didn't use; the trade loses the tracking number and goes back to waiting to ship.
 - With a **test token** the labels are samples and nothing is charged. The dialog says TEST MODE.
@@ -241,20 +248,25 @@ can follow packages in that service's own app on your phone too. Pick the servic
 → *Service* and paste its API key underneath. Integrations with several services are in progress and will be
 completed over time; the *Service* list shows which ones are ready.
 
-- The app syncs once when it opens and whenever you click **⟳ Sync tracking**. To sync on its own as well, set
+- The app syncs once when it opens and whenever you click **⟳ Sync tracking** (Dashboard, or *More ▾* on
+  Pending Trades). To sync on its own as well, set
   Settings → *TrackingApp* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
 - Each service limits how many numbers you can add a day and how often you can sync. The app counts its own calls
   and won't make one that would go over, so an add is never wasted. Settings shows how many you've used.
-- Saving a tracking number sets the trade to **Trade Pending** but doesn't add it to the service yet. The trade
-  shows "not added" until you click **➕ Add to TrackingApp**, which adds the selected trades (or all waiting ones)
-  after you confirm.
+- Saving a tracking number sets the trade to **Trade Pending**. The next sync adds it to the service by itself,
+  then reads its status. To add straight away, use *More ▾* → **➕ Add to TrackingApp now** on Pending Trades (or the
+  Dashboard button), which adds the selected trades (or all waiting ones) after you confirm.
 - A sync marks as added any number the service already has, so numbers you added in the service's app yourself
   don't need adding again.
 - **Clearing out finished packages:** after **⟳ Sync tracking**, the app lists the packages the service still
   has whose trades are all finished in the app (completed, lost or cancelled), and copies their tracking numbers
   to the clipboard so you can find and remove them in the service's app. A package shared with a trade that's
   still open isn't listed. Automatic syncs only mention the count in the status bar.
-- A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
+- A failed add (for example, a mistyped number) isn't retried by itself, so it doesn't use up an add on every
+  sync; it shows under *Needs attention*. Fix the number (the next sync adds it) or retry with *More ▾* →
+  **➕ Add to TrackingApp now**.
+- On Pending Trades, *More ▾* also has **Track (carrier's page)**, which opens the carrier's tracking page for the
+  selected trade.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
 - Labels bought in the app ([Buying shipping labels](#buying-shipping-labels)) are tracked through the label service
   instead, in the same sync.

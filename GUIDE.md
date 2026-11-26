@@ -210,6 +210,23 @@ account with a label service and its API token in Settings → Integrations → 
    yet). The trade gets the tracking number and carrier, moves to **Trade Pending**, and the label's cost goes into Shipping
    labels on that trade, so it counts in your shipping P/L straight away.
 
+**Several labels at once:** select several sells (Ctrl/Shift-click) and click **🏷 Create label…**. One window
+lists them all, and each address is checked with the carriers and priced straight away.
+
+- **Ship to / Address:** the address that goes on each label. Where the carriers would write it differently, their
+  version is used (✓ corrected). Select the row to see what you typed next to theirs, then click *Use mine* or *Use
+  the carriers' version*. An address they couldn't verify (⚠) waits until you click *Keep this address* or fix it
+  with **Edit…**. An address with something missing waits for **Edit…** too.
+- **Package:** set the box and weight, then click **Apply to all**, or select some rows and click **Apply to
+  selected**. The new package is priced again automatically.
+- **Service for all:** *Cheapest for each*, or a service such as Ground Advantage. A trade that doesn't offer it
+  gets its cheapest, and the status says so.
+- **Edit…** (or double-click a row) opens that trade in the one-label window: change its address, package or rate,
+  then click *Use this*. **Leave out** skips a trade.
+- **Buy N labels · $total** lists every label and the total before buying. Labels are bought one at a time. If one
+  fails, the rest stop so nothing is bought twice. Fix that one, click **Get rates** and buy the rest. Afterwards
+  the window offers to print them all at once.
+
 - Labels you buy this way are tracked through the label service, not your tracking service, and
   **⟳ Sync tracking** updates them too. They're never added to your tracking service, so they don't use its daily adds.
 - **🖨 Print labels:** select one or more trades on Pending Trades (Ctrl/Shift-click to choose several) and click

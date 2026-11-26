@@ -342,6 +342,9 @@ long as no search, status or type filter is on.
    **Buy label**. Get rates checks the address first and shows the carriers' version next to yours if they'd change
    it, so you pick the right one before paying. The trade gets the tracking number and moves to **Trade Pending**, and the label's cost goes on
    the trade straight away. The label is saved as a 4x6 PDF.
+   Shipping several? Select them all → **🏷 Create label…** opens one window where every address is checked and
+   priced. Set the package for all (or the selected rows), pick a service for all → **Buy N labels** buys them in
+   one go and offers to print them.
 3. Select every trade you're shipping today → **🖨 Print labels**. The print window shows each label; pick the
    printer (set 4x6 once in *Printer settings…*; it's remembered) and **Print** them all at once. Keep *Sharp black
    and white* on for a thermal printer.

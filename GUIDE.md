@@ -206,12 +206,27 @@ account with a label service and its API token in Settings → Integrations → 
    account, cheapest first. **Check address** under Ship to runs the same check whenever you like; the line beside it
    says whether the address checked out and whether it's residential. Edit the address afterwards and it's checked
    again before the next rates.
+
+   ![The address check](images/address-check.png)
+
+   *The carriers' version next to yours, with the changes marked (fictional address).*
+
 4. Pick one and click **Buy label**. After you confirm, the label is bought and saved as a 4x6 PDF (nothing prints
    yet). The trade gets the tracking number and carrier, moves to **Trade Pending**, and the label's cost goes into Shipping
    labels on that trade, so it counts in your shipping P/L straight away.
 
+![Create label for one trade](images/create-label.png)
+
+*One trade: the address checked and corrected, a flat-rate box, and the rates cheapest first (practice data, test
+token).*
+
 **Several labels at once:** select several sells (Ctrl/Shift-click) and click **🏷 Create label…**. One window
 lists them all, and each address is checked with the carriers and priced straight away.
+
+![Labels for several trades](images/bulk-labels.png)
+
+*Four trades: one corrected (selected, with what was typed beneath), one as typed, one the carriers couldn't verify
+and one missing its street (practice data, fictional addresses).*
 
 - **Ship to / Address:** the address that goes on each label. Where the carriers would write it differently, their
   version is used (✓ corrected). Select the row to see what you typed next to theirs, then click *Use mine* or *Use
@@ -239,6 +254,15 @@ lists them all, and each address is checked with the carriers and priced straigh
   - **Open PDF** prints from your PDF viewer instead.
 
   Trades with no label bought in the app are named so you know which ones are missing.
+- **Send the buyer their address and tracking:** buying a label puts a ready-to-paste note on the clipboard: the
+  address exactly as printed on the label, the service, the tracking number and the carrier's tracking link. Paste
+  it into your message to the buyer. To copy it again later, select the trades → *More ▾* (or right-click) →
+  **📋 Copy address & tracking for the buyer**; in the several-labels window, select bought rows → **📋 Copy address &
+  tracking**. For a tracking number you typed in yourself, it uses the address on the trade.
+- **Copy the label itself:** select the trades → *More ▾* (or right-click) → **📋 Copy label as a picture** (pastes
+  into a chat, email or image editor; several labels come out side by side) or **📋 Copy label as a PDF file**
+  (pastes as an attachment, or into a folder). In the several-labels window: select bought rows → **📋 Copy label ▾**.
+  The label shows your return address, so only send it where that's fine.
 - **Refund a label to redo it:** select the trades on Pending Trades → *More ▾* → **↩ Refund label…**. It lists
   each label and the total before asking. The trades lose the tracking number and go back to waiting to ship, and
   the app offers to make new labels for them right away. In the several-labels window, select bought rows and click

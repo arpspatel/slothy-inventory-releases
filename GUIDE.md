@@ -163,14 +163,14 @@ Your open trades. Right-click a trade (or use **More ▾**) for the less common 
 - **Partly delivered…:** when only part of a trade arrives (or ships), enter how many of each line arrived. That part
   is completed on the original trade, and the rest moves to a new open trade with the same details. Add the second
   tracking number to the new trade when it ships.
-- **Post / order links… (several trades):** paste the Reddit post, order page or other link for many trades in one
-  window. Select several trades first to see just those; with one or none selected it lists every open trade, those
-  without a link first. *Open post / order link* opens the selected trade's link.
+- **Set post / order link… (selected trades):** select the trades (Ctrl/Shift-click for several), paste one Reddit
+  post, order page or other link, and it goes on all of them, for example a lot bought from one post or one order
+  that ships in parts. Blank clears it. *Open post / order link* opens the selected trade's link.
 - **Lost/No Refund**, **Cancel trade** and **Delete…** end or remove a trade.
 
 ![Post / order links for several trades](images/links-dialog.png)
 
-*Post / order links for the selected trades: paste each link and click Save once (practice data).*
+*One link for the selected trades: paste it once and Save (practice data).*
 
 ### Packing slips (4x6 labels)
 

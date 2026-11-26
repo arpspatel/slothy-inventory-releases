@@ -11,7 +11,7 @@ For a page-by-page reference, see the [user guide](GUIDE.md).
 - [Pages](#pages)
 - [Workflows](#workflows): [buying](#buying), [selling](#selling), [a worked example](#a-worked-example),
   [partly delivered](#partly-delivered), [when things go wrong](#when-things-go-wrong), [serials](#serials),
-  [listing for sale](#listing-for-sale), [shipping and tracking](#shipping-and-tracking), [expenses](#expenses),
+  [pricing for sale](#pricing-for-sale), [shipping and tracking](#shipping-and-tracking), [expenses](#expenses),
   [shipping labels](#shipping-labels), [reports](#reports), [counterparties](#counterparties)
 - [Daily and weekly routine](#daily-and-weekly-routine)
 - [Troubleshooting and rules of thumb](#troubleshooting-and-rules-of-thumb)
@@ -19,8 +19,9 @@ For a page-by-page reference, see the [user guide](GUIDE.md).
 ## How it works
 
 Everything runs on your PC. Your data lives in one file (`inventory.db`), and API keys are stored encrypted for your
-Windows account. The app goes online only when it opens and when you click a button: your tracking service,
-gold-api.com for spot prices, Gemini for the optional AI features, and GitHub to check for app updates.
+Windows account. The app goes online only when it opens, when you click a button, and on the timers you turn on in
+Settings: your tracking service, gold-api.com for spot prices, your label service when you buy a label, Gemini for
+the optional AI features, and GitHub to check for app updates.
 
 | Concept | What it means |
 |---|---|
@@ -48,9 +49,8 @@ ounces and spot $/lb ÷ 16.
 Setup takes about 15 minutes: install the app, add two keys, check spot prices, and make a backup.
 
 
-![The Settings page](images/settings.png)
-
-*Settings: the tracking service and Gemini keys at the top, spot prices in the middle, your data and backups at the bottom.*
+Everything below is in the **Settings** menu at the top of the window (Ctrl+,): *Integrations* (Tracking, Shipping
+labels, Gemini), *Spot prices* and *Data & backups*. Each opens the settings window on that tab.
 
 1. **Install the app.** Download `SlothyInventorySetup-<version>.exe` from the
    [latest release](https://github.com/arpspatel/slothy-inventory-releases/releases/latest) and run it. If Windows shows
@@ -58,21 +58,22 @@ Setup takes about 15 minutes: install the app, add two keys, check spot prices, 
    Choose **Install for me only** (no admin rights needed) or **Install for all users**. Then open the app from the
    Start menu or the desktop shortcut.
 2. **Your database.** On first launch the app creates `Documents\InventoryApp\inventory.db` and offers to import an
-   existing workbook; choose No to start empty. Settings → *Data location* shows the file in use, with
+   existing workbook; choose No to start empty. Settings → *Data & backups* shows the file in use, with
    **Open folder**, **Move database…**, **Open / new database…** and **Back up now…**.
-3. **Set up tracking.** Settings → *TrackingApp* → pick the *Service* (integrations with more services are in
-   progress), then paste its API key in **New key** → **Save key**. Optional: set *Sync tracking* to
+3. **Set up tracking.** Settings → Integrations → *Tracking* → pick the *Service*, then paste its API key in **New key** → **Save key**. Optional: set *Sync tracking* to
    **Every hour** or **Every 2 hours** so tracking updates on its own while the app is open.
-4. **Add the Gemini key (optional).** Only needed for AI spreadsheet import and ✨ AI price check. Create it free at
+4. **Add the Gemini key (optional, Settings → Integrations → Gemini (AI)).** Only needed for AI spreadsheet import and ✨ AI price check. Create it free at
    [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Web-search price checks need a paid-tier key. Set
    your preferred price-check sites underneath.
 5. **Check spot prices.** Live prices load when the app opens. If they can't be fetched, type them in Settings →
-   *Spot prices* → **Save prices**. Copper is $/lb; the others are $/troy oz. Optional: *Refresh live prices
+   *Spot prices…* → **Save prices**. Copper is $/lb; the others are $/troy oz. Optional: *Refresh live prices
    every … minutes* (5 or more) keeps them current while the app is open.
-6. **Back up.** Click **Back up now…**. Better still, put the database in a OneDrive or Dropbox folder with
+6. **Shipping labels (optional).** To buy labels in the app, paste your label service's API token in Settings →
+   Integrations → *Shipping labels* and fill in *Ship-from address…* (with a phone number and an email).
+7. **Back up.** Click **Back up now…**. Better still, put the database in a OneDrive or Dropbox folder with
    **Move database…** for an automatic off-PC copy. The app also saves its own copies in a `backups` folder next to
    the database (each day you open it, before any delete and before each update). To keep a second copy off this
-   PC too, set Settings → *Extra backup folder* → **Choose folder…** (a NAS share or a USB drive): every automatic
+   PC too, set Settings → *Data & backups* → *Extra backup folder* → **Choose folder…** (a NAS share or a USB drive): every automatic
    backup is also copied there, and *Keep the last … days there* (7 by default) stops it filling up.
 
 Keys are encrypted for your Windows account. A copy of the database on another PC or account won't carry working keys;
@@ -87,22 +88,23 @@ yourself.
 
 ![The Dashboard](images/dashboard.png)
 
-*The Dashboard, with the nine pages in the sidebar on the left (practice data).*
+*The Dashboard, with the pages in the sidebar on the left (practice data).*
 
-Nine pages sit in the left-hand sidebar (Ctrl+1 to Ctrl+9). Pending Trades is where you work each day; the rest are
-for looking things up and reporting.
+The pages sit in the left-hand sidebar (Ctrl+1 to Ctrl+0; Settings is in the menu at the top, Ctrl+,). Pending Trades is where you work each
+day; the rest are for looking things up and reporting.
 
 | Page | Use it for | Key actions |
 |---|---|---|
-| **Dashboard** | Holdings at a glance: units, cost basis, melt, melt − cost, total sold, realized P/L, expenses, net P/L this year and this month, buys pending, sells pending (with estimated profit), listed for sale (value and profit at ask). Holdings by metal (items, weight, cost, average cost per ounce, melt), with ▸ to open each metal's types; metals aren't added together. *Needs attention* list. Tracking and spot status. | ⟳ Live prices, ⟳ Sync tracking, ➕ Add to TrackingApp, Reports |
-| **Inventory** | Every item with on hand, incoming, sell pending, bought, sold, avg cost, on-hand cost, sold $, realized P/L, ounces, melt and for sale. Products with several serials fold under a bold row (▸). Yellow = has open trades; red = oversold. Type (Vintage, Modern, Art, Generic, Sovereign, Pour or your own) has its own column and filter. | ＋ New item, Buy more…, Sell selected…, List for sale…, Edit, History, Picture, Delete |
-| **For Sale** | What you have listed and can still sell: qty for sale, ask, cost, profit at ask, margin, over melt. Products fold under a bold row; select it to act on all its serials. Yellow = no ask price; red = ask below cost. | Sell selected…, Edit listing…, Item details, ✨ AI price check, Price details, Take off sale |
-| **Pending Trades** | Open buys and sells, from payment to delivery. Pink = no items linked; green = delivered. | ＋ New buy / sell, Edit, $ Payment Completed, ✔ Trade Completed, ➕ Add to TrackingApp, ⟳ Sync tracking, Track, 🖨 Packing slips, More (Open post / order link, Partly delivered, Lost, Cancel, Delete) |
+| **Dashboard** | Holdings at a glance: units, cost basis, melt, melt − cost, total sold, realized P/L, expenses, net P/L this year and this month, buys pending, sells pending (with estimated profit), available for sale (value and profit at ask). Holdings by metal (items, weight, cost, average cost per ounce, melt), with ▸ to open each metal's types; metals aren't added together. *Needs attention* list. Tracking and spot status. | ⟳ Live prices, ⟳ Sync tracking, ➕ Add to TrackingApp, Reports |
+| **Inventory** | Every item with on hand, incoming, sell pending, bought, sold, avg cost, on-hand cost, sold $, realized P/L, ounces, melt and available. Products with several serials fold under a bold row (▸). Yellow = has open trades; red = oversold. Type (Vintage, Modern, Art, Generic, Sovereign, Pour or your own) has its own column and filter. | ＋ New item, Buy more…, Sell selected…, Ask price…, Move to book…, Keep…, Edit, Combine…, History, Picture, Delete |
+| **Available for Sale** | What you can still sell: available (on hand − sell pending − kept), sell pending, ask, ask total, avg cost per ounce, cost, profit at ask, margin, melt, over melt. Products fold under a bold row; select it to act on all its serials. Yellow = no ask price; red = ask below cost. | Sell selected…, Ask price…, Item details, ✨ AI price check, Price details, Keep… |
+| **Pending Trades** | Open buys and sells, from payment to delivery. Pink = no items linked; green = delivered. | ＋ New buy / sell, Edit, $ Payment Completed, ✔ Trade Completed, 🏷 Create label…, 🖨 Print labels, 🖨 Packing slips, More (Track, Sync tracking now, Add to TrackingApp now, Open post / order link, Post / order links… for several trades, Partly delivered, Lost, Cancel, Delete) |
 | **Trade History** | Finished trades (completed, lost, cancelled) and the profit on every sale. *By trade*: one row per trade with total, cost, P/L, shipping gain or cost, payment and tracking. *By item sold*: one row per item with qty, sale price, cost basis, P/L, margin, buyer, payment. Footer: P/L − expenses = net. | By trade / By item sold, View / edit, Reopen, Return / refund…, Open link, Delete, From / To, This year |
 | **Reports** | Month-by-month P&L for a year or all years: sales, cost of sales, lost buys, gross P/L, each expense category, net P/L, buys. Chart of net P/L per month. Sales broken down by metal, channel, counterparty or item. | Year, click a month or bar, Sales by, Export CSV… |
+| **Consignments** | Items people gave you to sell for a fee: per person, items here and sold, your fees, paid out and still owed. Never part of your own stock or cost. | ＋ Take in items…, Pay out…, Give back unsold…, Statement…, Their fee %… |
 | **Counterparties** | Everyone you trade with, grouped by type with totals (counterparties, trades, open, bought from, sold to, last trade). ▸ opens a type. | ＋ New counterparty, Edit, Show trades, ＋ Buy from, ＋ Sell to, Delete |
-| **Expenses** | Shipping, materials, fees, other. Shipping and fees from trades, and label costs from uploaded files, show here automatically. Totals by category. | Add, edit, delete; date filter; Shipping labels… |
-| **Settings** | API keys, price-check sites, manual spot prices, data location and backups (with an optional extra backup folder), API usage. | Save key, Save prices, Move database…, Back up now…, Open backups, Choose folder… |
+| **Expenses** | Shipping, materials, fees, other. Shipping and fees from trades, and label costs (uploaded files and labels bought in the app), show here automatically. Totals by category. | Add, edit, delete; date filter; Shipping labels… (upload, print, open, void) |
+| **Settings** (menu at the top, Ctrl+,) | Integrations (tracking service and sync timer; shipping labels: token, ship-from address; Gemini key, price-check sites), spot prices, data location and backups (with an optional extra backup folder), API usage. | Save key, Save prices, Move database…, Back up now…, Open backups, Choose folder… |
 
 **By trade vs By item sold.** By trade includes buys, cancelled trades and shipping details. By item sold has only
 sales and lost trades, so you can sort every sale by item or margin across trades. Both use the same numbers, so the
@@ -154,8 +156,10 @@ its effect.
 | **On hand** | Units from completed buys, minus units from completed sells |
 | **Incoming** | Units on open buys |
 | **Sell pending** | Units on open sells (still on hand until the sell is completed) |
-| **Available** | On hand − sell pending: what you can still offer someone else |
-| **For sale** | Units you've listed, after open sells use them up; never more than available |
+| **Available** | On hand − sell pending − units you keep: what you can still offer someone else |
+
+Mark pieces you aren't selling with **Keep…** (Inventory, Available for Sale or the item window); everything else on
+hand is for sale, with no separate listing step.
 
 ### Buying
 
@@ -173,8 +177,8 @@ its effect.
    now show as **Incoming**.
 6. When the seller sends tracking, edit the trade, paste it and choose the shipping method. Status becomes
    **Trade Pending**.
-7. Click **➕ Add to TrackingApp** (see [Shipping and tracking](#shipping-and-tracking)). Syncs update the status;
-   delivery turns the row green.
+7. The next tracking sync adds the number to your tracking service by itself (see
+   [Shipping and tracking](#shipping-and-tracking)) and updates the status; delivery turns the row green.
 8. Check the package, then **✔ Trade Completed**. On-hand qty and average cost update, and the trade moves to Trade
    History.
 
@@ -188,14 +192,15 @@ one.
 *A sell waiting for payment: Paid? says *Not paid yet* until you click $ Payment Completed.*
 
 1. Pending Trades → **＋ New sell** (Ctrl+S), or Inventory / For Sale → select items → **Sell selected…**. For a
-   product, you pick which serials go (listed ones first).
+   product, you pick which serials go.
 2. Set qty and sale price per unit, the counterparty, and the shipping you collected from the buyer (0 for free
    shipping or an offer that includes it). Save. The items now show as **Sell pending**.
 3. Status starts at **Awaiting Payment**. When paid, click **$ Payment Completed**.
-4. Print a packing slip (Pending Trades → **🖨 Packing slips**), pack and ship, add the tracking number, then
-   **➕ Add to TrackingApp**.
-5. After delivery and the buyer's confirmation, **✔ Trade Completed**. The sale, cost basis and P/L are recorded, on
-   hand goes down, and the listing goes down by the qty sold.
+4. Print a packing slip (Pending Trades → **🖨 Packing slips**) and pack. Then either buy the label in the app
+   (**🏷 Create label…**, which puts the tracking number on the trade; see [Shipping labels](#shipping-labels)) or
+   buy it elsewhere and paste the tracking number into the trade. The next tracking sync picks it up.
+5. After delivery and the buyer's confirmation, **✔ Trade Completed**. The sale, cost basis and P/L are recorded and
+   on hand goes down.
 
 **Payment method and detail.** On any buy or sell, pick how the money moved: Zelle, Venmo, PPFF, Cash App, Credit Card
 or Cash, or type another. In *Payment detail*, enter the username for Venmo, PPFF or Cash App, or the number or email
@@ -229,8 +234,8 @@ How one item's numbers move through two buys and a sell:
 | ✔ Complete that sell | 9 | 0 | 0 | 9 | $297 | $33.00 |
 
 The completed sell is booked as **sale price $240 − cost basis $198 (6 × $33.00) = P/L +$42**. Selling never changes
-the average cost of what's left. If 10 were listed for sale, For sale shows 4 once the sell is saved and stays at 4
-after it's completed.
+the average cost of what's left. If you were keeping 2 of them, Available would be 7 after the sell is saved
+(15 − 6 − 2) and stay at 7 once it's completed (9 − 2).
 
 ### Partly delivered
 
@@ -279,40 +284,45 @@ A trade with a return or refund shows **↩**. Remove the return before reopenin
 browser. The app stores the link, not the image. All serials of a product share one picture, including new serials. A
 serial with its own photo can also have *This serial's picture*, shown instead of the shared one for that piece.
 
-### Listing for sale
+### Pricing for sale
 
-1. Inventory → select the item → **List for sale…** → qty and ask price per unit.
-2. **Several at once** (e.g. a few serials of one product): Ctrl/Shift-click them, or select the product's bold row for
-   all its serials → **List for sale…** → one ask price per unit. Each is listed at everything it has available; leave
-   the ask blank to keep each item's own. On For Sale, **Edit listing…** with several rows selected re-prices them
-   together.
-3. For Sale shows each listing with profit at ask and margin. An open sell uses up the listing first; a completed sell
-   takes its qty off automatically.
-4. Optional: **✨ AI price check** (up to 10 listings) researches dealer asks and recent sold prices; **Price details**
+Everything on hand that you aren't keeping is for sale; there's nothing to list.
+
+1. **Keep what isn't for sale:** select it → **Keep…** (for one item with several units, choose how many). Kept units
+   stay in your inventory but leave Available for Sale.
+2. **Set asking prices:** Available for Sale (or Inventory) → select items → **Ask price…** → the price per unit. With
+   several selected (Ctrl/Shift-click, or a product's bold row for all its serials), they all get that price; a blank
+   clears it.
+3. **Price against spot:** *Avg cost/oz* shows what each ounce cost you, in the same ounce as spot, next to profit at
+   ask, margin and premium over melt.
+4. An open sell takes its units off *Available* straight away. An item with nothing left to sell drops off the page.
+5. Optional: **✨ AI price check** (up to 10 items) researches dealer asks and recent sold prices; **Price details**
    shows sources and a *Use as ask* button. Check the links before trusting it.
 
 ### Shipping and tracking
 
 The app adds your tracking numbers to a package-tracking service and reads back their delivery status, so you
-can follow packages in that service's own app on your phone too. Pick the service in Settings → *TrackingApp*
-→ *Service* and paste its API key underneath. Integrations with several services are in progress and will be
-completed over time; the *Service* list shows which ones are ready.
+can follow packages in that service's own app on your phone too. Pick the service in Settings → Integrations → *Tracking*
+→ *Service* (the list shows the ones the app works with) and paste its API key underneath.
 
-- The app syncs once when it opens and whenever you click **⟳ Sync tracking**. To sync on its own as well, set
-  Settings → *TrackingApp* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
+- The app syncs once when it opens and whenever you click **⟳ Sync tracking** (Dashboard, or *More ▾* on Pending
+  Trades). To sync on its own as well, set
+  Settings → Integrations → *Tracking* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
 - Each service limits how many numbers you can add a day and how often you can sync. The app counts its own calls
   and won't make one that would go over, so an add is never wasted. Settings shows how many you've used.
-- Saving a tracking number sets the trade to **Trade Pending** but doesn't add it to the service yet. The trade
-  shows "not added" until you click **➕ Add to TrackingApp**, which adds the selected trades (or all waiting ones)
-  after you confirm.
+- Saving a tracking number sets the trade to **Trade Pending**. The next sync adds it to the service by itself, then
+  reads its status. To add straight away, use *More ▾* → **➕ Add to TrackingApp now** on Pending Trades.
 - A sync marks as added any number the service already has, so numbers you added in the service's app yourself
   don't need adding again.
-- A failed add (for example, a mistyped number) isn't retried by itself; it shows under *Needs attention*.
+- A failed add (for example, a mistyped number) isn't retried by itself, so it doesn't use up an add on every sync;
+  it shows under *Needs attention*. Fix the number (the next sync adds it) or retry from *More ▾*.
+- Labels bought in the app are tracked through the label service instead, in the same sync, and never use your
+  tracking service's adds.
 - The carrier comes from the shipping method: UPS, FedEx, otherwise USPS.
 - **Only the bare minimum leaves the app:** the tracking number, the carrier and a short delivery name. Never the
   counterparty, address, items or prices, whichever service you use.
 - **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so the
-  service never holds what's in a package or who it's for. Set your own labels in Settings → *TrackingApp* →
+  service never holds what's in a package or who it's for. Set your own labels in Settings → Integrations → *Tracking* →
   *Delivery names*: something you'll recognise in the tracking app on your phone (an arrow or a symbol works well),
   not a word like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in
   Pending Trades.
@@ -325,8 +335,20 @@ long as no search, status or type filter is on.
 
 ### Shipping labels
 
-A sell's real shipping result is what you collected minus what the label cost. The cost comes from your label
-provider's export (Pirate Ship and similar).
+**Buying labels in the app.** With a label service token and your ship-from address in Settings:
+
+1. Pending Trades → select the sell → **🏷 Create label…**. The buyer's address is filled in from the trade.
+2. Pick the package (a flat-rate box or envelope, or your own box size) and weight → **Get rates** → pick one →
+   **Buy label**. The trade gets the tracking number and moves to **Trade Pending**, and the label's cost goes on
+   the trade straight away. The label is saved as a 4x6 PDF.
+3. Select every trade you're shipping today → **🖨 Print labels**. The print window shows each label; pick the
+   printer (set 4x6 once in *Printer settings…*; it's remembered) and **Print** them all at once. Keep *Sharp black
+   and white* on for a thermal printer.
+4. A label you won't use: Expenses → **Shipping labels…** → **Void label…** asks for a refund and puts the trade back
+   to waiting to ship.
+
+**Labels bought elsewhere.** A sell's real shipping result is what you collected minus what the label cost. For labels
+bought outside the app, the cost comes from your label provider's export (Pirate Ship and similar).
 
 1. Expenses → **Shipping labels…** → **Upload label file…**, and choose an `.xlsx` or `.csv` with tracking number and
    cost columns. Upload the same file or a newer one any time; your links and decisions are kept.
@@ -383,22 +405,24 @@ deals the moment they're agreed.
   trades).
 - [ ] Record every deal agreed since yesterday as a new buy or sell, with the counterparty type set.
 - [ ] Mark trades paid with **$ Payment Completed** as payments land.
-- [ ] Print packing slips for today's sells, then paste new tracking numbers into their trades and click
-  **➕ Add to TrackingApp** once for all of them (watch your service's daily limit).
+- [ ] Print packing slips for today's sells. Buy their labels with **🏷 Create label…** and print them together
+  with **🖨 Print labels**, or paste tracking numbers from labels bought elsewhere. The next sync adds them to your
+  tracking service (watch its daily limit).
 - [ ] Green (delivered) rows: inspect buys, confirm sells with buyers, then **✔ Trade Completed**.
 - [ ] Add any expense you paid today (labels, supplies, fees).
 
 ### Every week
 
 - [ ] Pending Trades: anything stuck for more than a week? Chase it, or mark Lost/No Refund or Cancel.
-- [ ] For Sale: update ask prices; take sold-out or stale listings off.
+- [ ] Available for Sale: update ask prices against spot; **Keep…** anything you've decided not to sell.
 - [ ] Inventory: scan for red (oversold) or yellow rows that shouldn't still be open.
-- [ ] Settings → **Back up now…** (unless the database lives in OneDrive or Dropbox, or an extra backup folder is
+- [ ] Settings → *Data & backups* → **Back up now…** (unless the database lives in OneDrive or Dropbox, or an extra backup folder is
   set).
 
 ### Every month or quarter
 
-- [ ] Expenses → **Shipping labels…** → upload the latest label export, and decide on any labels with no trade.
+- [ ] Expenses → **Shipping labels…** → upload the latest export for labels bought outside the app, and decide on
+  any labels with no trade.
 - [ ] Trade History → set From / To to the period → note sales, cost basis, realized P/L, expenses and net in the
   footer.
 - [ ] Expenses → check categories and totals for the same period.
@@ -428,11 +452,12 @@ order.
 | On hand didn't change after a deal | Trade still open | Pending Trades → **✔ Trade Completed** |
 | Row is pink on Pending Trades | Trade with no items linked | Open it and add its item lines |
 | Item shows red in Inventory | Sold more than bought (often a buy not completed, or completed after the sale) | Complete the buy; check for a missing buy |
-| **Add to TrackingApp** refuses | The service's daily add limit is used up | Wait; the rest stay queued |
+| A tracking number isn't added | The service's daily add limit is used up, or the number was refused | Wait for tomorrow's sync, or fix the number on the trade (*Needs attention* says which) |
+| Label print is too small or shifted | The printer's paper size isn't 4x6 | Print labels → **Printer settings…** → 4x6, then print again |
 | Delivered row never completes | Completion is manual by design | Inspect, then **✔ Trade Completed** |
 | Can't delete an item | It's on a real trade | Remove it from those trades (the message lists them) or delete the trades |
 | Serial split refused | More serials than units bought, part already sold, or a serial used elsewhere | Fix the count, or add serials one item at a time |
-| Spot prices are 0 or stale | gold-api.com unreachable | **⟳ Live prices**, or type them in Settings |
+| Spot prices are 0 or stale | gold-api.com unreachable | **⟳ Live prices**, or type them in Settings → *Spot prices…* |
 | "Extra backup folder" warning when the app opens | The NAS or drive was offline or unplugged | Nothing to do: your normal backup was made, and the copy catches up next time. Or **Clear** the folder in Settings |
 | Keys missing on another PC | Keys are encrypted per Windows account | Enter them again in Settings |
 | "Something went wrong" message | An unexpected error; the last action may not have saved | Check what you just did. Details are in `error-log.txt` in `Documents\InventoryApp` |
@@ -440,7 +465,7 @@ order.
 
 ### Restoring a backup
 
-Close the app, then either copy the backup over `inventory.db` or use Settings → **Open / new database…** to point at
-the backup file. Automatic backups are in the `backups` folder next to the database (**Open backups** in Settings):
+Close the app, then either copy the backup over `inventory.db` or use Settings → *Data & backups* → **Open / new database…** to point at
+the backup file. Automatic backups are in the `backups` folder next to the database (**Open backups** in Settings → *Data & backups*):
 one for each day you opened the app (up to 30), one before each delete (up to 20) and one before each update (up to
 10). With an extra backup folder set, the same copies are there too, so you can restore from it if this PC fails.

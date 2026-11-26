@@ -39,7 +39,15 @@ Version numbers are the build date and time: `YY.MM.DD.HHMM`.
 
 ## Your data
 
-The app keeps everything in `Documents\InventoryApp\inventory.db` on your own PC. Nothing is uploaded.
+The app keeps everything in `Documents\InventoryApp\inventory.db` on your own PC. Only the bare minimum leaves it, and
+only for features you turn on:
+
+- **Package tracking:** tracking numbers, the carrier and a short delivery name go to your tracking service.
+- **Shipping labels:** when you buy a label in the app, the ship-from and ship-to addresses and the package size go
+  to your label service.
+- **AI features:** only when you click them (see the [user guide](GUIDE.md#ai-features)).
+
+Items, prices, notes and usernames never leave your PC.
 
 - **Uninstalling:** Windows Settings → Apps → *Slothy Inventory Manager*. Your database in Documents is left alone.
 - If the app is open, setup and uninstall ask you to close it first.

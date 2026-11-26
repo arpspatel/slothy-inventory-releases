@@ -12,6 +12,7 @@ How to use the app, page by page. For a start-to-finish walkthrough of recording
 - [Trade History](#trade-history)
 - [Package tracking](#package-tracking)
 - [For Sale](#for-sale)
+- [Consignments](#consignments)
 - [Counterparties](#counterparties)
 - [Expenses and shipping labels](#expenses-and-shipping-labels)
 - [Reports](#reports)
@@ -106,6 +107,17 @@ metal, name, mint, weight and grade count as one **product**.
   your spreadsheet without a cost can be given one in **Edit** (*Cost / unit*).
 - **Deleting:** Delete removes an item, but only if it isn't on any trade other than its import. Otherwise the message
   lists the trades it's on.
+- **Mint** is a list of the mints your items already use; type to filter it, or type a new one. A name that matches
+  one in use (apart from capitals and spaces) takes that spelling. **Trade → Mints…** lists them with how many items
+  each has: rename one, or rename it to another's name to merge the two.
+
+### Combining items that are the same thing
+
+When the same thing ended up as several items (for example generic rounds bought at different times), select them on
+Inventory and click **Combine…**, then pick the one to keep. Their trades, returns, price checks and asking prices move
+to it, the others are deleted, and their cost pools into one average. The window shows realized P/L before and after,
+and a backup is made first. *Show → All items* finds sold-out ones too. Serialised pieces, or items of different metals
+or weights, can't be combined.
 
 ## Buying and selling
 
@@ -151,6 +163,9 @@ Your open trades. Right-click a trade (or use **More ▾**) for the less common 
 - **Partly delivered…:** when only part of a trade arrives (or ships), enter how many of each line arrived. That part
   is completed on the original trade, and the rest moves to a new open trade with the same details. Add the second
   tracking number to the new trade when it ships.
+- **Post / order links… (several trades):** paste the Reddit post, order page or other link for many trades in one
+  window. Select several trades first to see just those; with one or none selected it lists every open trade, those
+  without a link first. *Open post / order link* opens the selected trade's link.
 - **Lost/No Refund**, **Cancel trade** and **Delete…** end or remove a trade.
 
 ### Packing slips (4x6 labels)
@@ -175,7 +190,7 @@ ticked. **Print selected** opens a 4x6 page in your browser with its print dialo
 ### Buying shipping labels
 
 Select an open sell and click **🏷 Create label…** to buy its shipping label without leaving the app. You need an
-account with a label service and its API token in Settings → *Shipping labels*, plus your ship-from address.
+account with a label service and its API token in Settings → Integrations → *Shipping labels*, plus your ship-from address.
 
 1. **Ship to** is filled in from the trade's address (or the counterparty's). Check it and fix anything missing.
 2. **Package:** pick a flat-rate envelope or box, or *Custom box* and type its size. Enter the weight in pounds and
@@ -244,13 +259,12 @@ expenses for the date range to give net P/L.
 ## Package tracking
 
 The app adds your tracking numbers to a package-tracking service and reads back their delivery status, so you
-can follow packages in that service's own app on your phone too. Pick the service in Settings → *TrackingApp*
-→ *Service* and paste its API key underneath. Integrations with several services are in progress and will be
-completed over time; the *Service* list shows which ones are ready.
+can follow packages in that service's own app on your phone too. Pick the service in Settings → Integrations → *Tracking*
+→ *Service* (the list shows the ones the app works with) and paste its API key underneath.
 
 - The app syncs once when it opens and whenever you click **⟳ Sync tracking** (Dashboard, or *More ▾* on
   Pending Trades). To sync on its own as well, set
-  Settings → *TrackingApp* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
+  Settings → Integrations → *Tracking* → *Sync tracking* to **Every hour** or **Every 2 hours** (off by default).
 - Each service limits how many numbers you can add a day and how often you can sync. The app counts its own calls
   and won't make one that would go over, so an add is never wasted. Settings shows how many you've used.
 - Saving a tracking number sets the trade to **Trade Pending**. The next sync adds it to the service by itself,
@@ -273,7 +287,7 @@ completed over time; the *Service* list shows which ones are ready.
 - **Only the bare minimum leaves the app:** the tracking number, the carrier and a short delivery name. Never the
   counterparty, address, items or prices, whichever service you use.
 - **Delivery names:** a delivery is named only with a short label for buys or sells and the trade number, so the
-  service never holds what's in a package or who it's for. Set your own labels in Settings → *TrackingApp* →
+  service never holds what's in a package or who it's for. Set your own labels in Settings → Integrations → *Tracking* →
   *Delivery names*: something you'll recognise in the tracking app on your phone (an arrow or a symbol works well),
   not a word like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in
   Pending Trades.
@@ -281,8 +295,8 @@ completed over time; the *Service* list shows which ones are ready.
 ## For Sale
 
 **Available for Sale** shows what you can still sell: everything on hand, less units already on an open sell and units
-you're keeping. Each row has its available quantity, sell pending, asking price, average cost per ounce, cost, profit at
-ask, margin and premium over melt.
+you're keeping. Each row has its available quantity, sell pending, asking price, ask total, average cost per ounce, cost,
+profit at ask, margin, melt and premium over melt.
 
 
 ![The For Sale page](images/for-sale.png)
@@ -300,6 +314,21 @@ ask, margin and premium over melt.
   Double-click a Qty or Unit $ cell to change it. **Lot price…** splits one agreed total across the lines in
   proportion to their value. Anything you don't sell stays available.
 - **✨ AI price check** looks up current prices; see [AI features](#ai-features).
+
+## Consignments
+
+Items someone gives you to sell for a fee. They're sold with ordinary sells, but they're never part of your own units,
+cost, melt or holdings, and the profit on each sale is only your fee.
+
+- **＋ Take in items…:** who they're from, their fee % (remembered for that person) and the items, each with its own
+  fee if it differs.
+- **Selling:** sell them like anything else. Each sale keeps the fee % it was sold at; the rest is what you owe the
+  consignor. A refund takes back their share and your fee in proportion.
+- The page lists each consignor with items received, still here, on open sales and sold, sales, your fees, paid out
+  and **still owed**. The Dashboard shows what you owe consignors in total.
+- **Pay out…** records money you paid them (it comes off Cash). **Give back unsold…** returns items you didn't sell.
+  **Statement…** opens a page for them with their items, sales, fees and payouts, without buyer names.
+- **Their fee %…** changes a consignor's fee for future sales.
 
 ## Counterparties
 
@@ -370,7 +399,7 @@ from your spreadsheet have no date, so they show as **Undated** under All years.
 ## AI features
 
 Both use Google's Gemini and run only when you click their buttons. Create a free API key at
-[aistudio.google.com/apikey](https://aistudio.google.com/apikey) and paste it into **Settings**. (A Gemini app or
+[aistudio.google.com/apikey](https://aistudio.google.com/apikey) and paste it into **Settings → Integrations → Gemini (AI)**. (A Gemini app or
 Google AI Pro subscription doesn't include an API key.) Settings shows this month's usage.
 
 - **Import any spreadsheet with AI** (File menu, into an empty database): Gemini reads the first 25 rows of each sheet
@@ -416,23 +445,32 @@ you complete the buy, the piece moves over at cost by itself, so all your trades
 
 ## Settings, backups and your data
 
-![The Settings page](images/settings.png)
+Settings are in the **Settings** menu at the top of the window (or Ctrl+,). Each item opens the settings window on
+its own tab, so you only see one area at a time:
 
-*Settings: API keys and the tracking timer, spot prices and their refresh, and where your data and backups go.*
+| Settings menu | Tab | What's there |
+|---|---|---|
+| Integrations → Tracking… | Tracking | Tracking service, its key and usage, *Sync tracking*, *Delivery names* |
+| Integrations → Shipping labels… | Shipping labels | Label service token, *Ship-from address…* |
+| Integrations → Gemini (AI)… | Gemini (AI) | Gemini key, price-check sites, model, this month's usage |
+| Spot prices… | Spot prices | Manual prices, ⟳ Live prices, *Refresh live prices every … minutes* |
+| Data & backups… | Data & backups | Database file, folders, *Move database…*, *Back up now…*, extra backup folder |
+
+Closing the window keeps everything as saved; each part has its own **Save** button.
 
 - **API keys** (tracking service, Gemini, label service) are stored encrypted so that only your Windows account on this PC can read them. The
   box is never pre-filled; paste a new key and click *Save key*, or *Remove key*.
 - **Spot prices:** type prices by hand if live prices aren't available. *Refresh live prices every … minutes*
   fetches them on its own while the app is open: 5 minutes or more, or **Off** (the default: only when the app
   opens and on ⟳ Live prices). If the first lookup fails because the network isn't ready yet, it retries on its own.
-- **TrackingApp:** pick the *Service* (more integrations are in progress), paste its key, and set *Sync
+- **TrackingApp:** pick the *Service*, paste its key, and set *Sync
   tracking* to **Off** (the default), **Every hour** or **Every 2 hours**, and your *Delivery names*.
 - **Shipping labels:** paste your label service's API token, and set your *Ship-from address* (it needs a phone number
   and an email). See [Buying shipping labels](#buying-shipping-labels).
 - **Automatic backups:** a copy of your database is saved in a `backups` folder next to it each day you open the app
   (last 30 kept), before anything is deleted (last 20) and before each update (last 10). *Open backups* shows them. To
   restore one, close the app and copy it over `inventory.db`, or use **File → Open / new database…**.
-- **Extra backup folder:** Settings → Data location → *Extra backup folder* → **Choose folder…** (for example a
+- **Extra backup folder:** Settings → *Data & backups* → *Extra backup folder* → **Choose folder…** (for example a
   NAS share or a USB drive). Every automatic backup is then also copied there. *Keep the last … days there*
   (7 by default) removes older ones from that folder so it doesn't fill up. Leave the folder blank to keep backups
   only next to the database. If the folder can't be reached, your normal backup is still
@@ -464,10 +502,13 @@ For any other layout, use **Import any spreadsheet with AI…** (see [AI feature
 
 | Keys | Does |
 |---|---|
-| Ctrl+1 … Ctrl+9 | Dashboard, Inventory, For Sale, Pending Trades, Trade History, Reports, Counterparties, Expenses, Settings |
+| Ctrl+1 … Ctrl+0 | Dashboard, Inventory, Available for Sale, Pending Trades, Trade History, Reports, Consignments, (a shared book's page), Counterparties, Expenses |
+| Ctrl+, | Settings |
 | Ctrl+B | New buy |
 | Ctrl+S | New sell |
 | Ctrl+N | New item |
 | Delete | Remove the selected line in a trade |
+
+**Tables:** click a column heading to sort by it. Drag a column's edge to resize it; the width stays as you set it.
 
 Updates: **Help → Check for updates…**. Your version: **Help → About**.

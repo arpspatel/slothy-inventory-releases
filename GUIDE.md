@@ -254,15 +254,13 @@ and one missing its street (practice data, fictional addresses).*
   - **Open PDF** prints from your PDF viewer instead.
 
   Trades with no label bought in the app are named so you know which ones are missing.
-- **Send the buyer their address and tracking:** buying a label puts a ready-to-paste note on the clipboard: the
-  address exactly as printed on the label, the service, the tracking number and the carrier's tracking link. Paste
-  it into your message to the buyer. To copy it again later, select the trades → *More ▾* (or right-click) →
-  **📋 Copy address & tracking for the buyer**; in the several-labels window, select bought rows → **📋 Copy address &
-  tracking**. For a tracking number you typed in yourself, it uses the address on the trade.
-- **Copy the label itself:** select the trades → *More ▾* (or right-click) → **📋 Copy label as a picture** (pastes
-  into a chat, email or image editor; several labels come out side by side) or **📋 Copy label as a PDF file**
-  (pastes as an attachment, or into a folder). In the several-labels window: select bought rows → **📋 Copy label ▾**.
-  The label shows your return address, so only send it where that's fine.
+- **Send the buyer the tracking link:** buying a label copies the carrier's tracking link, ready to paste into your
+  message. To copy it again, select the trades → *More ▾* (or right-click) → **📋 Copy tracking link** (several trades
+  give one line each, with the trade number); in the several-labels window, select bought rows → **📋 Copy tracking
+  link**.
+- **Copy the label as a picture:** select the trades → *More ▾* (or right-click) → **📋 Copy label as a picture**, then
+  paste it into a chat or email (several labels come out side by side). In the several-labels window: select bought
+  rows → **📋 Copy label (picture)**. The label shows your return address, so only send it where that's fine.
 - **Refund a label to redo it:** select the trades on Pending Trades → *More ▾* → **↩ Refund label…**. It lists
   each label and the total before asking. The trades lose the tracking number and go back to waiting to ship, and
   the app offers to make new labels for them right away. In the several-labels window, select bought rows and click

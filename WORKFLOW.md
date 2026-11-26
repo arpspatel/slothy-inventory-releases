@@ -348,8 +348,9 @@ long as no search, status or type filter is on.
 3. Select every trade you're shipping today → **🖨 Print labels**. The print window shows each label; pick the
    printer (set 4x6 once in *Printer settings…*; it's remembered) and **Print** them all at once. Keep *Sharp black
    and white* on for a thermal printer.
-4. A label you won't use: Expenses → **Shipping labels…** → **Void label…** asks for a refund and puts the trade back
-   to waiting to ship.
+4. A label you won't use, or one to redo (wrong box, weight or address): select the trades → *More ▾* →
+   **↩ Refund label…**. The trades go back to waiting to ship and the app offers to make new labels straight away.
+   (Expenses → **Shipping labels…** → **Void label…** refunds one label from the list there.)
 
 **Labels bought elsewhere.** A sell's real shipping result is what you collected minus what the label cost. For labels
 bought outside the app, the cost comes from your label provider's export (Pirate Ship and similar).

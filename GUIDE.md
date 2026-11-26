@@ -239,6 +239,12 @@ lists them all, and each address is checked with the carriers and priced straigh
   - **Open PDF** prints from your PDF viewer instead.
 
   Trades with no label bought in the app are named so you know which ones are missing.
+- **Refund a label to redo it:** select the trades on Pending Trades → *More ▾* → **↩ Refund label…**. It lists
+  each label and the total before asking. The trades lose the tracking number and go back to waiting to ship, and
+  the app offers to make new labels for them right away. In the several-labels window, select bought rows and click
+  **↩ Refund label**: they go back in the list, priced again, ready to buy. Only refund labels you haven't shipped
+  with. A refund the label service refuses (e.g. a label already scanned) leaves that label on its trade and says
+  why. USPS refunds can take a couple of weeks to reach your account.
 - **Expenses → Shipping labels…:** *Print labels* does the same for the bought labels you select there. *Open label* opens one. *Void label…* asks for a
   refund of a label you didn't use; the trade loses the tracking number and goes back to waiting to ship.
 - With a **test token** the labels are samples and nothing is charged. The dialog says TEST MODE.

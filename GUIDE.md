@@ -168,6 +168,10 @@ Your open trades. Right-click a trade (or use **More ▾**) for the less common 
   without a link first. *Open post / order link* opens the selected trade's link.
 - **Lost/No Refund**, **Cancel trade** and **Delete…** end or remove a trade.
 
+![Post / order links for several trades](images/links-dialog.png)
+
+*Post / order links for the selected trades: paste each link and click Save once (practice data).*
+
 ### Packing slips (4x6 labels)
 
 **🖨 Packing slips** lists the open sells that haven't been delivered yet, with the ones you had selected already

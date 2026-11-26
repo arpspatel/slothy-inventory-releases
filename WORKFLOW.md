@@ -339,7 +339,8 @@ long as no search, status or type filter is on.
 
 1. Pending Trades → select the sell → **🏷 Create label…**. The buyer's address is filled in from the trade.
 2. Pick the package (a flat-rate box or envelope, or your own box size) and weight → **Get rates** → pick one →
-   **Buy label**. The trade gets the tracking number and moves to **Trade Pending**, and the label's cost goes on
+   **Buy label**. Get rates checks the address first and shows the carriers' version next to yours if they'd change
+   it, so you pick the right one before paying. The trade gets the tracking number and moves to **Trade Pending**, and the label's cost goes on
    the trade straight away. The label is saved as a 4x6 PDF.
 3. Select every trade you're shipping today → **🖨 Print labels**. The print window shows each label; pick the
    printer (set 4x6 once in *Printer settings…*; it's remembered) and **Print** them all at once. Keep *Sharp black

@@ -200,7 +200,12 @@ account with a label service and its API token in Settings → Integrations → 
 2. **Package:** pick a flat-rate envelope or box, or *Custom box* and type its size. Enter the weight in pounds and
    ounces: box, packing and metal together. Tick *Signature confirmation* if you want it. The app remembers your last
    package.
-3. **Get rates** shows every carrier and service on your account, cheapest first.
+3. **Get rates** first checks the address with the carriers. If they'd write it differently (a ZIP+4, a
+   standard street name) or can't find it, a window shows what you typed next to their version, with the changes
+   marked; choose *Use the carriers' version* or *Keep mine*. Then it shows every carrier and service on your
+   account, cheapest first. **Check address** under Ship to runs the same check whenever you like; the line beside it
+   says whether the address checked out and whether it's residential. Edit the address afterwards and it's checked
+   again before the next rates.
 4. Pick one and click **Buy label**. After you confirm, the label is bought and saved as a 4x6 PDF (nothing prints
    yet). The trade gets the tracking number and carrier, moves to **Trade Pending**, and the label's cost goes into Shipping
    labels on that trade, so it counts in your shipping P/L straight away.

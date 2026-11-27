@@ -350,13 +350,14 @@ can follow packages in that service's own app on your phone too. Pick the servic
 
 **Shipments Map** (in the sidebar, or Ctrl+M) shows every open package that has a tracking number on a US map:
 
-- **Each dot is a package at its last scan**, coloured by status: label created (grey), in transit (blue), out for
-  delivery or ready for pickup (teal), problem (orange: an exception, a failed attempt, or no updates) and delivered
-  (green). Packages in the same town share one dot with a count on it.
-- **Last known location:** when a scan has no place (for example *In transit to next facility*), the dot stays where
-  the package was last scanned with one.
-- A dashed line runs from each package to where it's going: the buyer's address for a sell, you for a buy. A label
-  that hasn't been scanned yet sits where the package starts (you, for a sell).
+- **Sells are curved routes:** a blue dot where the package started (you), a bold orange line to an **orange
+  arrow** at the town it was last scanned in, then a dashed orange line on to the **buyer** (an orange dot). Once it's
+  delivered, the line and the buyer's dot turn **green**. A problem (an exception, a failed attempt, or no updates)
+  turns the line red-orange. A label that hasn't been scanned yet starts its arrow at you.
+- **Buys** are a dot at their last scan, coloured by status, with a thin dashed line to you.
+- **Last known location:** when a scan has no place (for example *In transit to next facility*), the arrow or dot
+  stays where the package was last scanned with one.
+- Packages in the same town share one dot with a count on it. The legend is under the map.
 - **States are shaded** by how many packages are headed there, and the list on the right has the counts ("Going to:
   CA 2 · TX 1").
 - Hover a dot to see the trades, their last scan and where they're going; click it to pick them in the list;
@@ -366,7 +367,7 @@ can follow packages in that service's own app on your phone too. Pick the servic
   nothing is looked up online and no address leaves your PC.
 
 ![Shipments map](images/shipments-map.png)
-*Every open package at its last scan, with a line to where it's going (practice data, made-up addresses).*
+*Sells as routes from you to the buyer, the arrow where each one is now; green once delivered (practice data, made-up addresses).*
 
 ## For Sale
 

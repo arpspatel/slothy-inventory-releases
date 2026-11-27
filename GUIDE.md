@@ -346,6 +346,28 @@ can follow packages in that service's own app on your phone too. Pick the servic
   not a word like Buy, Sell or Gold. Leave them blank for just the trade number. The number matches the trade in
   Pending Trades.
 
+### Shipments map
+
+**Shipments Map** (in the sidebar, or Ctrl+M) shows every open package that has a tracking number on a US map:
+
+- **Each dot is a package at its last scan**, coloured by status: label created (grey), in transit (blue), out for
+  delivery or ready for pickup (teal), problem (orange: an exception, a failed attempt, or no updates) and delivered
+  (green). Packages in the same town share one dot with a count on it.
+- **Last known location:** when a scan has no place (for example *In transit to next facility*), the dot stays where
+  the package was last scanned with one.
+- A dashed line runs from each package to where it's going: the buyer's address for a sell, you for a buy. A label
+  that hasn't been scanned yet sits where the package starts (you, for a sell).
+- **States are shaded** by how many packages are headed there, and the list on the right has the counts ("Going to:
+  CA 2 · TX 1").
+- Hover a dot to see the trades, their last scan and where they're going; click it to pick them in the list;
+  double-click a dot or a row to open the trade. Tick **Sells** / **Buys** and the statuses to show only some.
+- A package with no scanned place yet and no address to start from is listed under the table instead.
+- It updates with every tracking sync. The map, cities and ZIP codes are built into the app (US Census data), so
+  nothing is looked up online and no address leaves your PC.
+
+![Shipments map](images/shipments-map.png)
+*Every open package at its last scan, with a line to where it's going (practice data, made-up addresses).*
+
 ## For Sale
 
 **Available for Sale** shows what you can still sell: everything on hand, less units already on an open sell and units
@@ -557,6 +579,7 @@ For any other layout, use **Import any spreadsheet with AI…** (see [AI feature
 | Keys | Does |
 |---|---|
 | Ctrl+1 … Ctrl+0 | Dashboard, Inventory, Available for Sale, Pending Trades, Trade History, Reports, Consignments, (a shared book's page), Counterparties, Expenses |
+| Ctrl+M | Shipments Map |
 | Ctrl+, | Settings |
 | Ctrl+B | New buy |
 | Ctrl+S | New sell |
